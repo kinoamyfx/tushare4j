@@ -1,5 +1,6 @@
 package com.github.kinoamyfx.tushare4j.stock;
 
+import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import com.github.kinoamyfx.tushare4j.utils.ClassUtils;
 import lombok.Data;
@@ -7,25 +8,26 @@ import lombok.Singular;
 import lombok.ToString;
 import lombok.experimental.Accessors;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Data
 @Accessors(chain = true)
 @ToString
-public class StockDailyRequest implements TsRequest<KLine> {
+public class StockDailyKRequest implements TsRequest<KLine> {
 
     @Singular
     private String[] fields = new String[]{"ts_code", "trade_date", "open", "high", "low", "close", "pre_close", "change", "pct_chg", "vol", "amount"};
 
+    @TsParam(name = "ts_code")
     private String tsCode;
 
+    @TsParam(name = "trade_date")
     private String tradeDate;
 
+    @TsParam(name = "start_date")
     private String startDate;
 
+    @TsParam(name = "end_date")
     private String endDate;
 
     @Override
@@ -38,19 +40,4 @@ public class StockDailyRequest implements TsRequest<KLine> {
         return ClassUtils.resolveFields(KLine.class);
     }
 
-    @Override
-    public Map<String, String> params() {
-
-        Map<String, String> params = new HashMap<>();
-
-        if (tsCode == null && tradeDate == null) {
-            throw new IllegalStateException();
-        }
-
-        Optional.ofNullable(tsCode).ifPresent(s -> params.put("ts_code", tsCode));
-        Optional.ofNullable(tradeDate).ifPresent(s -> params.put("trade_date", tradeDate));
-        Optional.ofNullable(startDate).ifPresent(s -> params.put("start_date", startDate));
-        Optional.ofNullable(endDate).ifPresent(s -> params.put("end_date", endDate));
-        return params;
-    }
 }

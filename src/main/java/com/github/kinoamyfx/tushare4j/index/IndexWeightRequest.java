@@ -3,7 +3,6 @@ package com.github.kinoamyfx.tushare4j.index;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 
 import java.util.List;
-import java.util.Map;
 
 public class IndexWeightRequest implements TsRequest<IndexWeight> {
 
@@ -17,8 +16,4 @@ public class IndexWeightRequest implements TsRequest<IndexWeight> {
         return null;
     }
 
-    @Override
-    public Map<String, String> params() {
-        return null;
-    }
 }

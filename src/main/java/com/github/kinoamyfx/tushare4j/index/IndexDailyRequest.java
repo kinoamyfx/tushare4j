@@ -1,24 +1,30 @@
 package com.github.kinoamyfx.tushare4j.index;
 
+import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import com.github.kinoamyfx.tushare4j.stock.KLine;
 import com.github.kinoamyfx.tushare4j.utils.ClassUtils;
+import lombok.Data;
 import lombok.NonNull;
+import lombok.ToString;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
+@Data
+@ToString
 public class IndexDailyRequest implements TsRequest<KLine> {
 
+    @TsParam(name = "ts_code")
     @NonNull
     private String tsCode;
 
+    @TsParam(name = "trade_date")
     private String tradeDate;
 
+    @TsParam(name = "start_date")
     private String startDate;
 
+    @TsParam(name = "end_date")
     private String endDate;
 
 
@@ -34,15 +40,5 @@ public class IndexDailyRequest implements TsRequest<KLine> {
     @Override
     public List<String> fields() {
         return ClassUtils.resolveFields(KLine.class);
-    }
-
-    @Override
-    public Map<String, String> params() {
-        Map<String, String> params = new HashMap<>();
-        Optional.ofNullable(tsCode).ifPresent(s -> params.put("ts_code", tsCode));
-        Optional.ofNullable(tradeDate).ifPresent(s -> params.put("trade_date", tradeDate));
-        Optional.ofNullable(startDate).ifPresent(s -> params.put("start_date", startDate));
-        Optional.ofNullable(endDate).ifPresent(s -> params.put("end_date", endDate));
-        return params;
     }
 }

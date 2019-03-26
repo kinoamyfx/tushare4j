@@ -1,11 +1,8 @@
 package com.github.kinoamyfx.tushare4j;
 
-import com.github.kinoamyfx.tushare4j.core.TsBody;
-import com.github.kinoamyfx.tushare4j.core.TsRequest;
-import com.github.kinoamyfx.tushare4j.core.TsResponseWrapper;
-import com.github.kinoamyfx.tushare4j.core.TuShareException;
+import com.github.kinoamyfx.tushare4j.core.*;
 import com.github.kinoamyfx.tushare4j.stock.KLine;
-import com.github.kinoamyfx.tushare4j.stock.StockDailyRequest;
+import com.github.kinoamyfx.tushare4j.stock.StockDailyKRequest;
 import com.github.kinoamyfx.tushare4j.utils.JSONUtils;
 import com.github.kinoamyfx.tushare4j.utils.ThreadPool;
 import lombok.extern.slf4j.Slf4j;
@@ -13,11 +10,14 @@ import okhttp3.*;
 import org.apache.commons.lang3.reflect.TypeUtils;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
@@ -35,7 +35,8 @@ public class TuShareClient {
     public <R> List<R> call(TsRequest<R> tsRequest) throws IOException, TuShareException {
 
         //构造请求
-        TsBody body = new TsBody(tsRequest.apiName(), token, tsRequest.fields(), tsRequest.params());
+        TsBody body = new TsBody(tsRequest.apiName(), token, tsRequest.fields(), resolveParams(tsRequest));
+
         Request okRequest = new Request.Builder()
                 .url("http://api.tushare.pro")
                 .post(RequestBody.create(MediaType.parse("application/json"), JSONUtils.toJson(body)))
@@ -89,7 +90,7 @@ public class TuShareClient {
     }
 
     /**
-     * @param <R> example: {@link StockDailyRequest} is {@link KLine}
+     * @param <R> example: {@link StockDailyKRequest} is {@link KLine}
      * @return 返回request对应的response类型
      */
     @SuppressWarnings("unchecked")
@@ -108,6 +109,36 @@ public class TuShareClient {
             }
         }
         throw new IllegalStateException();
+    }
+
+    /**
+     * @return
+     */
+    private Map<String, String> resolveParams(Object o) {
+
+        Map<String, String> params = new HashMap<>();
+
+        for (Field f : o.getClass().getDeclaredFields()) {
+            Optional.ofNullable(f.getAnnotation(TsParam.class)).ifPresent(tsParam -> {
+                f.setAccessible(true);
+                try {
+                    Object value = f.get(o);
+
+                    if (tsParam.required() && value == null) {
+                        throw new IllegalStateException(tsParam.name() + " required");
+                    }
+
+                    if (value == null) {
+                        return;
+                    }
+
+                    params.put(tsParam.name(), value.toString());
+                } catch (IllegalAccessException | IllegalStateException e) {
+                    log.error("", e);
+                }
+            });
+        }
+        return params;
     }
 }
 

@@ -1,4 +1,4 @@
-package com.github.kinoamyfx.tushare4j.stock;
+package com.github.kinoamyfx.tushare4j.basic;
 
 import lombok.Data;
 

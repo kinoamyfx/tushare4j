@@ -1,8 +1,6 @@
 package com.github.kinoamyfx.tushare4j.basic;
 
 import com.github.kinoamyfx.tushare4j.core.TuShareException;
-import com.github.kinoamyfx.tushare4j.stock.StockBasic;
-import com.github.kinoamyfx.tushare4j.stock.StockBasicListRequest;
 import org.junit.Assert;
 import org.junit.Test;
 
