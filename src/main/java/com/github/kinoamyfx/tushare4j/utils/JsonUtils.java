@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @UtilityClass
-public class JSONUtils {
+public class JsonUtils {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     static {

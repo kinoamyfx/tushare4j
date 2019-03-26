@@ -1,6 +1,6 @@
 package com.github.kinoamyfx.tushare4j.core;
 
-import com.github.kinoamyfx.tushare4j.utils.JSONUtils;
+import com.github.kinoamyfx.tushare4j.utils.JsonUtils;
 import lombok.Data;
 
 import java.util.HashMap;
@@ -23,6 +23,6 @@ public class TsResponseWrapperData {
             return map;
         }).collect(Collectors.toList());
 
-        return JSONUtils.toJson(collect);
+        return JsonUtils.toJson(collect);
     }
 }
