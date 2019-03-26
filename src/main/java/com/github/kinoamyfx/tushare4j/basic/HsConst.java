@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class HsConst {
+
     private String ts_code;
     private String hs_type;
     private String in_date;

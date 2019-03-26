@@ -1,8 +1,8 @@
 package com.github.kinoamyfx.tushare4j;
 
 import com.github.kinoamyfx.tushare4j.core.*;
-import com.github.kinoamyfx.tushare4j.stock.KLine;
-import com.github.kinoamyfx.tushare4j.stock.StockDailyKRequest;
+import com.github.kinoamyfx.tushare4j.market.KLine;
+import com.github.kinoamyfx.tushare4j.market.StockDailyRequest;
 import com.github.kinoamyfx.tushare4j.utils.JSONUtils;
 import com.github.kinoamyfx.tushare4j.utils.ThreadPool;
 import lombok.extern.slf4j.Slf4j;
@@ -90,7 +90,7 @@ public class TuShareClient {
     }
 
     /**
-     * @param <R> example: {@link StockDailyKRequest} is {@link KLine}
+     * @param <R> example: {@link StockDailyRequest} is {@link KLine}
      * @return 返回request对应的response类型
      */
     @SuppressWarnings("unchecked")

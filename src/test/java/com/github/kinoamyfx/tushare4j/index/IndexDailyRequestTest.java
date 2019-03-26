@@ -2,7 +2,7 @@ package com.github.kinoamyfx.tushare4j.index;
 
 import com.github.kinoamyfx.tushare4j.TuShareClientTest;
 import com.github.kinoamyfx.tushare4j.core.TuShareException;
-import com.github.kinoamyfx.tushare4j.stock.KLine;
+import com.github.kinoamyfx.tushare4j.market.KLine;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,22 +1,16 @@
-package com.github.kinoamyfx.tushare4j.stock;
+package com.github.kinoamyfx.tushare4j.market;
 
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import com.github.kinoamyfx.tushare4j.utils.ClassUtils;
 import lombok.Data;
-import lombok.Singular;
-import lombok.ToString;
 import lombok.experimental.Accessors;
 
 import java.util.List;
 
 @Data
 @Accessors(chain = true)
-@ToString
-public class StockDailyKRequest implements TsRequest<KLine> {
-
-    @Singular
-    private String[] fields = new String[]{"ts_code", "trade_date", "open", "high", "low", "close", "pre_close", "change", "pct_chg", "vol", "amount"};
+public class StockMonthlyRequest implements TsRequest<KLine> {
 
     @TsParam(name = "ts_code")
     private String tsCode;
@@ -32,12 +26,11 @@ public class StockDailyKRequest implements TsRequest<KLine> {
 
     @Override
     public String apiName() {
-        return "daily";
+        return "monthly";
     }
 
     @Override
     public List<String> fields() {
         return ClassUtils.resolveFields(KLine.class);
     }
-
 }
