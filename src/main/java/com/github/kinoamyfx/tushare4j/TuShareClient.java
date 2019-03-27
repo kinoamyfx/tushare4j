@@ -27,7 +27,6 @@ public class TuShareClient {
     private String token;
     private OkHttpClient okHttp;
 
-
     public TuShareClient(String token) {
         this.token = token;
         this.okHttp = new OkHttpClient.Builder().build();
