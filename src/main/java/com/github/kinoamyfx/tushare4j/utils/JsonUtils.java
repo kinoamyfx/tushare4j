@@ -31,10 +31,8 @@ public class JsonUtils {
     /**
      * 将json转化为对象，注意对象不可为Collections
      *
-     * @param json
-     * @param clz
-     * @param <T>
-     * @return
+     * @param json json string.
+     * @param clz  type.
      */
     public static <T> T parseObject(String json, Class<T> clz) {
         try {
@@ -47,10 +45,6 @@ public class JsonUtils {
     /**
      * TypeFactory解决Json反序列时的泛型问题.
      *
-     * @param json
-     * @param clz
-     * @param <T>
-     * @return
      * @see com.fasterxml.jackson.databind.type.TypeFactory#constructCollectionType(Class, JavaType)
      */
     public static <T> List<T> parseList(String json, Class<T> clz) {

@@ -30,5 +30,4 @@ public class TradeCalendarRequest implements TsRequest<TradeCalendar> {
     public String apiName() {
         return "trade_cal";
     }
-
 }

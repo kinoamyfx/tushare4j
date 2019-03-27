@@ -21,5 +21,4 @@ public class HsConstRequest implements TsRequest<HsConst> {
     public String apiName() {
         return "hs_const";
     }
-
 }

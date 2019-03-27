@@ -22,5 +22,4 @@ public class NameChangeRequest implements TsRequest<NameChange> {
     public String apiName() {
         return "namechange";
     }
-
 }

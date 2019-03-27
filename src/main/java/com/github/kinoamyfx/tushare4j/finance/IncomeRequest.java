@@ -17,6 +17,7 @@ public class IncomeRequest implements TsRequest<Income> {
 
     @TsParam(name = "start_date")
     private String startDate;
+
     @TsParam(name = "end_date")
     private String endDate;
 
