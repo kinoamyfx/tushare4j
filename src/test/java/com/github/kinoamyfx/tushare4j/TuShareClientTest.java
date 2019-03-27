@@ -20,6 +20,7 @@ public class TuShareClientTest {
             properties.load(Thread.class.getResourceAsStream("/token.properties"));
             String token = properties.getProperty("token").trim();
             client = new TuShareClient(token);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
