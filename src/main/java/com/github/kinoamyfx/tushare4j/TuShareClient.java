@@ -111,14 +111,16 @@ public class TuShareClient {
      * @see TuShareClient#call(TsRequest)
      */
     public <R> CompletionStage<List<R>> asyncCall(TsRequest<R> tsRequest) {
-        return
-                CompletableFuture.supplyAsync(() -> {
-                    try {
-                        return call(tsRequest);
-                    } catch (IOException | TuShareException e) {
-                        throw new RuntimeException(e);
-                    }
-                }, ThreadPool.io());
+        CompletableFuture<List<R>> future = new CompletableFuture<>();
+        ThreadPool.io().submit(() -> {
+            try {
+                List<R> value = call(tsRequest);
+                future.complete(value);
+            } catch (IOException | TuShareException e) {
+                future.completeExceptionally(e);
+            }
+        });
+        return future;
     }
 }
 
