@@ -1,11 +1,14 @@
 
-TuShare4J-PRO  -  A TuShare Java Client
+tushare4j-pro  -  A TuShare Java Client
 
 - 相关参考: https://tushare.pro
 - HTTP API: https://tushare.pro/document/1?doc_id=130
 
+### 依赖引入
+```xml
+```
 
-# 基本用法
+### 基本用法
 ```java
 
     //使用token初始化client
