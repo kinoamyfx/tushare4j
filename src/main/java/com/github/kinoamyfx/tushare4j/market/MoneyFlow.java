@@ -1,38 +1,68 @@
 package com.github.kinoamyfx.tushare4j.market;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
 public class MoneyFlow {
 
-    private String ts_code;
-    private String trade_date;
+    @JsonProperty("ts_code")
+    private String tsCode;
+    @JsonProperty("trade_date")
+    private String tradeDate;
 
-    private Integer buy_sm_vol;
-    private Float buy_sm_amount;
+    @JsonProperty("buy_sm_vol")
+    private Integer buySmVol;
 
-    private Integer sell_sm_vol;
-    private Float sell_sm_amount;
+    @JsonProperty("buy_sm_amount")
+    private Float buySmAmount;
 
-    private Integer buy_md_vol;
-    private Float buy_md_amount;
+    @JsonProperty("sell_sm_vol")
+    private Integer sellSmVol;
 
-    private Integer sell_md_vol;
-    private Float sell_md_amount;
+    @JsonProperty("sell_sm_amount")
+    private Float sellSmAmount;
+
+    @JsonProperty("buy_md_vol")
+    private Integer buyMdVol;
+
+    @JsonProperty("buy_md_amount")
+    private Float buyMdAmount;
+
+    @JsonProperty("sell_md_vol")
+    private Integer sellMdVol;
+
+    @JsonProperty("sell_md_amount")
+    private Float sellMdAmount;
+
+    @JsonProperty("buy_lg_vol")
+    private Integer buyLgVol;
+
+    @JsonProperty("buy_lg_amount")
+    private Float buyLgAmount;
+
+    @JsonProperty("sell_lg_vol")
+    private Integer sellLgVol;
+
+    @JsonProperty("sell_lg_amount")
+    private Float sellLgAmount;
+
+    @JsonProperty("buy_elg_vol")
+    private Integer buyElgVol;
+
+    @JsonProperty("buy_elg_amount")
+    private Float buyElgAmount;
 
 
-    private Integer buy_lg_vol;
-    private Float buy_lg_amount;
+    @JsonProperty("sell_elg_vol")
+    private Integer sellElgVol;
 
-    private Integer sell_lg_vol;
-    private Float sell_lg_amount;
+    @JsonProperty("sell_elg_amount")
+    private Float sellElgAmount;
 
-    private Integer buy_elg_vol;
-    private Float buy_elg_amount;
+    @JsonProperty("net_mf_vol")
+    private Integer netMfVol;
 
-    private Integer sell_elg_vol;
-    private Float sell_elg_amount;
-
-    private Integer net_mf_vol;
-    private Float net_mf_amount;
+    @JsonProperty("net_mf_amount")
+    private Float netMfAmount;
 }

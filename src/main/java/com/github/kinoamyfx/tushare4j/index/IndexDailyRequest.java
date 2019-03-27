@@ -3,12 +3,9 @@ package com.github.kinoamyfx.tushare4j.index;
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import com.github.kinoamyfx.tushare4j.market.KLine;
-import com.github.kinoamyfx.tushare4j.utils.ClassUtils;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.ToString;
-
-import java.util.List;
 
 @Data
 @ToString
@@ -37,8 +34,4 @@ public class IndexDailyRequest implements TsRequest<KLine> {
         return "index_daily";
     }
 
-    @Override
-    public List<String> fields() {
-        return ClassUtils.resolveFields(KLine.class);
-    }
 }

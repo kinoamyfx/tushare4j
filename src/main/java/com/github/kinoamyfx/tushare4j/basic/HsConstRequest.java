@@ -2,10 +2,7 @@ package com.github.kinoamyfx.tushare4j.basic;
 
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
-import com.github.kinoamyfx.tushare4j.utils.ClassUtils;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 public class HsConstRequest implements TsRequest<HsConst> {
@@ -25,8 +22,4 @@ public class HsConstRequest implements TsRequest<HsConst> {
         return "hs_const";
     }
 
-    @Override
-    public List<String> fields() {
-        return ClassUtils.resolveFields(HsConst.class);
-    }
 }

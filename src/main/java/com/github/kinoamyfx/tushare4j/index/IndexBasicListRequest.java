@@ -2,12 +2,9 @@ package com.github.kinoamyfx.tushare4j.index;
 
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
-import com.github.kinoamyfx.tushare4j.utils.ClassUtils;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
-import java.util.List;
 
 
 @Accessors(chain = true)
@@ -33,10 +30,4 @@ public class IndexBasicListRequest implements TsRequest<IndexBasic> {
     public String apiName() {
         return "index_basic";
     }
-
-    @Override
-    public List<String> fields() {
-        return ClassUtils.resolveFields(IndexBasic.class);
-    }
-
 }

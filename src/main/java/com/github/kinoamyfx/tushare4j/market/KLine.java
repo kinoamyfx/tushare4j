@@ -7,15 +7,18 @@ import lombok.Data;
 public strictfp class KLine {
 
     @JsonProperty("ts_code")
-    private String ts_code;
-    private String trade_date;
-    private Float pre_close;
+    private String tsCode;
+    @JsonProperty("trade_date")
+    private String tradeDate;
+    @JsonProperty("pre_close")
+    private Float preClose;
     private Float open;
     private Float close;
     private Float high;
     private Float low;
     private Float change;
-    private Float pct_chg;
+    @JsonProperty("pct_chg")
+    private Float pctChg;
     private Float vol;
     private Float amount;
 }

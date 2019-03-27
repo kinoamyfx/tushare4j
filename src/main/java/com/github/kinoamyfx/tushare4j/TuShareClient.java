@@ -2,25 +2,24 @@ package com.github.kinoamyfx.tushare4j;
 
 import com.github.kinoamyfx.tushare4j.core.FieldFilter.FieldExclude;
 import com.github.kinoamyfx.tushare4j.core.FieldFilter.FieldInclude;
-import com.github.kinoamyfx.tushare4j.core.*;
-import com.github.kinoamyfx.tushare4j.market.KLine;
-import com.github.kinoamyfx.tushare4j.market.StockDailyRequest;
-import com.github.kinoamyfx.tushare4j.utils.ClassUtils;
+import com.github.kinoamyfx.tushare4j.core.TsBody;
+import com.github.kinoamyfx.tushare4j.core.TsRequest;
+import com.github.kinoamyfx.tushare4j.core.TsResponseWrapper;
+import com.github.kinoamyfx.tushare4j.core.TuShareException;
 import com.github.kinoamyfx.tushare4j.utils.JsonUtils;
 import com.github.kinoamyfx.tushare4j.utils.ThreadPool;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
-import org.apache.commons.lang3.reflect.TypeUtils;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-import java.lang.reflect.TypeVariable;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
+
+import static com.github.kinoamyfx.tushare4j.utils.TuShareUtils.*;
 
 @Slf4j
 public class TuShareClient {
@@ -28,15 +27,16 @@ public class TuShareClient {
     private String token;
     private OkHttpClient okHttp;
 
+
     public TuShareClient(String token) {
         this.token = token;
         this.okHttp = new OkHttpClient.Builder().build();
     }
 
+
     public <R> List<R> call(TsRequest<R> tsRequest) throws IOException, TuShareException {
         Class<R> responseType = getResponseType(tsRequest);
-        List<String> fields = ClassUtils.resolveFields(responseType);
-
+        List<String> fields = resolveTsFields(responseType);
         return call(tsRequest, fields);
     }
 
@@ -51,7 +51,7 @@ public class TuShareClient {
 
     public <R> List<R> call(TsRequest<R> tsRequest, FieldExclude... excludes) throws IOException, TuShareException {
         Class<R> responseType = getResponseType(tsRequest);
-        List<String> fields = ClassUtils.resolveFields(responseType);
+        List<String> fields = resolveTsFields(responseType);
 
         List<String> excludeFields = Arrays.asList(excludes).parallelStream().map(FieldExclude::getName).collect(Collectors.toList());
 
@@ -67,7 +67,7 @@ public class TuShareClient {
         }
 
         //构造请求
-        TsBody body = new TsBody(tsRequest.apiName(), token, fields, resolveParams(tsRequest));
+        TsBody body = new TsBody(tsRequest.apiName(), token, fields, resolveTsParams(tsRequest));
 
         Request okRequest = new Request.Builder()
                 .url("http://api.tushare.pro")
@@ -119,59 +119,6 @@ public class TuShareClient {
                         throw new RuntimeException(e);
                     }
                 }, ThreadPool.io());
-    }
-
-    /**
-     * @param <R> example: {@link StockDailyRequest} is {@link KLine}
-     * @return 返回request对应的response类型
-     */
-    @SuppressWarnings("unchecked")
-    private <R> Class<R> getResponseType(TsRequest<R> tsRequest) {
-
-        Map<TypeVariable<?>, Type> typeArguments = TypeUtils.getTypeArguments(tsRequest.getClass(), TsRequest.class);
-
-        for (Map.Entry<TypeVariable<?>, Type> entry : typeArguments.entrySet()) {
-            if (entry.getKey().getName().equals("R")) {
-                if (entry.getValue() instanceof ParameterizedType) {
-                    return (Class) ((ParameterizedType) entry.getValue()).getRawType();
-                }
-
-                if (entry.getValue() instanceof Class) {
-                    return (Class) entry.getValue();
-                }
-            }
-        }
-        throw new IllegalStateException();
-    }
-
-    /**
-     * @return
-     */
-    private Map<String, String> resolveParams(Object o) {
-
-        Map<String, String> params = new HashMap<>();
-
-        for (Field f : o.getClass().getDeclaredFields()) {
-            Optional.ofNullable(f.getAnnotation(TsParam.class)).ifPresent(tsParam -> {
-                f.setAccessible(true);
-                try {
-                    Object value = f.get(o);
-
-                    if (tsParam.required() && value == null) {
-                        throw new IllegalStateException(tsParam.name() + " required");
-                    }
-
-                    if (value == null) {
-                        return;
-                    }
-
-                    params.put(tsParam.name(), value.toString());
-                } catch (IllegalAccessException | IllegalStateException e) {
-                    log.error("", e);
-                }
-            });
-        }
-        return params;
     }
 }
 

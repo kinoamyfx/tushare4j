@@ -2,12 +2,9 @@ package com.github.kinoamyfx.tushare4j.basic;
 
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
-import com.github.kinoamyfx.tushare4j.utils.ClassUtils;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
-import java.util.List;
 
 @Getter
 @Accessors(chain = true)
@@ -28,11 +25,6 @@ public class StockBasicListRequest implements TsRequest<StockBasic> {
     @Override
     public String apiName() {
         return "stock_basic";
-    }
-
-    @Override
-    public List<String> fields() {
-        return ClassUtils.resolveFields(StockBasic.class);
     }
 
     /**

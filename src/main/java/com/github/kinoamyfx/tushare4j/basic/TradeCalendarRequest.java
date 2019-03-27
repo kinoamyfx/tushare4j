@@ -2,12 +2,9 @@ package com.github.kinoamyfx.tushare4j.basic;
 
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
-import com.github.kinoamyfx.tushare4j.utils.ClassUtils;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-
-import java.util.List;
 
 @Getter
 @Accessors(chain = true)
@@ -34,8 +31,4 @@ public class TradeCalendarRequest implements TsRequest<TradeCalendar> {
         return "trade_cal";
     }
 
-    @Override
-    public List<String> fields() {
-        return ClassUtils.resolveFields(TradeCalendar.class);
-    }
 }

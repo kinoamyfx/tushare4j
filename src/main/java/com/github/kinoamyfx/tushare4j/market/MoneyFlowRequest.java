@@ -2,11 +2,8 @@ package com.github.kinoamyfx.tushare4j.market;
 
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
-import com.github.kinoamyfx.tushare4j.utils.ClassUtils;
 import lombok.Data;
 import lombok.experimental.Accessors;
-
-import java.util.List;
 
 @Data
 @Accessors(chain = true)
@@ -29,8 +26,4 @@ public class MoneyFlowRequest implements TsRequest<MoneyFlow> {
         return "moneyflow";
     }
 
-    @Override
-    public List<String> fields() {
-        return ClassUtils.resolveFields(MoneyFlow.class);
-    }
 }

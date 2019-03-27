@@ -41,9 +41,9 @@ public class TuShareClientTest {
 
         Assert.assertFalse(call.isEmpty());
 
-        call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.getTs_code()));
+        call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.getTsCode()));
         call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.getOpen()));
-        call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.getTrade_date()));
+        call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.getTradeDate()));
     }
 
     @Test
@@ -52,8 +52,8 @@ public class TuShareClientTest {
         List<KLine> call = TuShareClientTest.client.call(request, FieldFilter.exclude("trade_date", "pre_close"));
 
         Assert.assertFalse(call.isEmpty());
-        call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.getTs_code()));
-        call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.getTrade_date()));
-        call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.getPre_close()));
+        call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.getTsCode()));
+        call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.getTradeDate()));
+        call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.getPreClose()));
     }
 }

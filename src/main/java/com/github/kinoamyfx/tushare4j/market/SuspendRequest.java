@@ -2,11 +2,8 @@ package com.github.kinoamyfx.tushare4j.market;
 
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
-import com.github.kinoamyfx.tushare4j.utils.ClassUtils;
 import lombok.Data;
 import lombok.experimental.Accessors;
-
-import java.util.List;
 
 @Data
 @Accessors(chain = true)
@@ -27,7 +24,10 @@ public class SuspendRequest implements TsRequest<Suspend> {
     }
 
     @Override
-    public List<String> fields() {
-        return ClassUtils.resolveFields(Suspend.class);
+    public void validate() {
+
+        if (tsCode == null && suspendDate == null && resumeDate == null) {
+            throw new IllegalArgumentException("ts_code,suspend_date,resume_date : need at least select one");
+        }
     }
 }
