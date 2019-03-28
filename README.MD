@@ -1,5 +1,7 @@
 TuShare4J-PRO     -     A TuShare Java Client
 
+[![Build Status](https://www.travis-ci.org/KinoamyFx/tushare4j-pro.svg?branch=master)](https://www.travis-ci.org/KinoamyFx/tushare4j-pro)
+
 # 相关项目
 - TuShare Http Api: https://tushare.pro/document/1?doc_id=130
 
