@@ -1,7 +1,7 @@
 package com.github.kinoamyfx.tushare4j;
 
-import com.github.kinoamyfx.tushare4j.core.FieldFilter.FieldExclude;
-import com.github.kinoamyfx.tushare4j.core.FieldFilter.FieldInclude;
+import com.github.kinoamyfx.tushare4j.core.FieldFilter.FieldExcluder;
+import com.github.kinoamyfx.tushare4j.core.FieldFilter.FieldIncluder;
 import com.github.kinoamyfx.tushare4j.core.TsBody;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import com.github.kinoamyfx.tushare4j.core.TsResponseWrapper;
@@ -40,19 +40,19 @@ public class TuShareClient {
     }
 
 
-    public <R> List<R> call(TsRequest<R> tsRequest, FieldInclude... includes) throws IOException, TuShareException {
+    public <R> List<R> call(TsRequest<R> tsRequest, FieldIncluder... includers) throws IOException, TuShareException {
 
         List<String> fields =
-                Arrays.asList(includes).parallelStream().map(FieldInclude::getName).collect(Collectors.toList());
+                Arrays.asList(includers).parallelStream().map(FieldIncluder::getName).collect(Collectors.toList());
 
         return call(tsRequest, fields);
     }
 
-    public <R> List<R> call(TsRequest<R> tsRequest, FieldExclude... excludes) throws IOException, TuShareException {
+    public <R> List<R> call(TsRequest<R> tsRequest, FieldExcluder... excluders) throws IOException, TuShareException {
         Class<R> responseType = getResponseType(tsRequest);
         List<String> fields = resolveTsFields(responseType);
 
-        List<String> excludeFields = Arrays.asList(excludes).parallelStream().map(FieldExclude::getName).collect(Collectors.toList());
+        List<String> excludeFields = Arrays.asList(excluders).parallelStream().map(FieldExcluder::getName).collect(Collectors.toList());
 
         fields.removeAll(excludeFields);
 
@@ -109,17 +109,54 @@ public class TuShareClient {
      *
      * @see TuShareClient#call(TsRequest)
      */
-    public <R> CompletionStage<List<R>> asyncCall(TsRequest<R> tsRequest) {
+    private <R> CompletionStage<List<R>> asyncCall(TsRequest<R> tsRequest, List<String> fields) {
         CompletableFuture<List<R>> future = new CompletableFuture<>();
         ThreadPool.io().submit(() -> {
             try {
-                List<R> value = call(tsRequest);
+                List<R> value = call(tsRequest, fields);
                 future.complete(value);
             } catch (IOException | TuShareException e) {
                 future.completeExceptionally(e);
             }
         });
         return future;
+    }
+
+    /**
+     * 异步执行请求
+     *
+     * @see TuShareClient#call(TsRequest)
+     */
+    public <R> CompletionStage<List<R>> asyncCall(TsRequest<R> tsRequest) {
+        Class<R> responseType = getResponseType(tsRequest);
+        List<String> fields = resolveTsFields(responseType);
+
+        return asyncCall(tsRequest, fields);
+    }
+
+    /**
+     * 异步执行请求
+     *
+     * @see TuShareClient#call(TsRequest)
+     */
+    public <R> CompletionStage<List<R>> asyncCall(TsRequest<R> tsRequest, FieldIncluder... includers) {
+
+        List<String> fields =
+                Arrays.asList(includers).parallelStream().map(FieldIncluder::getName).collect(Collectors.toList());
+
+        return asyncCall(tsRequest, fields);
+    }
+
+
+    public <R> CompletionStage<List<R>> asyncCall(TsRequest<R> tsRequest, FieldExcluder... excluders) {
+        Class<R> responseType = getResponseType(tsRequest);
+        List<String> fields = resolveTsFields(responseType);
+
+        List<String> excludeFields = Arrays.asList(excluders).parallelStream().map(FieldExcluder::getName).collect(Collectors.toList());
+
+        fields.removeAll(excludeFields);
+
+        return asyncCall(tsRequest, fields);
     }
 }
 
