@@ -1,8 +1,8 @@
 TuShare4J-PRO     -     A TuShare Java Client
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/47149da913294140a3e364c861ef823d)](https://app.codacy.com/app/KinoamyFx/tushare4j-pro?utm_source=github.com&utm_medium=referral&utm_content=KinoamyFx/tushare4j-pro&utm_campaign=Badge_Grade_Dashboard)
-[![codecov](https://codecov.io/gh/KinoamyFx/tushare4j-pro/branch/master/graph/badge.svg)](https://codecov.io/gh/KinoamyFx/tushare4j-pro)
 [![Build Status](https://www.travis-ci.org/KinoamyFx/tushare4j-pro.svg?branch=master)](https://www.travis-ci.org/KinoamyFx/tushare4j-pro)
+[![codecov](https://codecov.io/gh/KinoamyFx/tushare4j-pro/branch/master/graph/badge.svg)](https://codecov.io/gh/KinoamyFx/tushare4j-pro)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/47149da913294140a3e364c861ef823d)](https://app.codacy.com/app/KinoamyFx/tushare4j-pro?utm_source=github.com&utm_medium=referral&utm_content=KinoamyFx/tushare4j-pro&utm_campaign=Badge_Grade_Dashboard)
 
 # 相关项目
 - TuShare Http Api: https://tushare.pro/document/1?doc_id=130
