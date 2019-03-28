@@ -1,5 +1,4 @@
 language: java
-jdk: jdk8
 
 script: "mvn cobertura:cobertura"
 
