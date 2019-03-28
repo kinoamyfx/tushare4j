@@ -1,7 +1,6 @@
 package com.github.kinoamyfx.tushare4j.finance;
 
 import com.github.kinoamyfx.tushare4j.CodeUtils;
-import org.junit.Test;
 
 public class BalanceSheetTest {
 
@@ -692,7 +691,7 @@ public class BalanceSheetTest {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
+
     public void testG() {
         CodeUtils.codeg3(content);
     }

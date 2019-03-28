@@ -1,7 +1,6 @@
 package com.github.kinoamyfx.tushare4j.finance;
 
 import com.github.kinoamyfx.tushare4j.CodeUtils;
-import org.junit.Test;
 
 public class CashFlowTest {
 
@@ -457,8 +456,8 @@ public class CashFlowTest {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
-    public void testGenerate() {
+
+    public void codeg() {
         CodeUtils.codeg3(content);
     }
 }

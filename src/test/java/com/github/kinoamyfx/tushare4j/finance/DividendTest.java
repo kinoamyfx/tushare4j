@@ -1,7 +1,6 @@
 package com.github.kinoamyfx.tushare4j.finance;
 
 import com.github.kinoamyfx.tushare4j.CodeUtils;
-import org.junit.Test;
 
 public class DividendTest {
 
@@ -103,7 +102,7 @@ public class DividendTest {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
+
     public void codeg() {
         CodeUtils.codeg4(content);
     }
