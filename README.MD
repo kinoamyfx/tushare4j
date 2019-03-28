@@ -4,11 +4,11 @@ TuShare4J-PRO     -     A TuShare Java Client
 - TuShare Http Api: https://tushare.pro/document/1?doc_id=130
 
 ### 依赖引入
-```
+```xml
 ```
 
 ### 基本用法
-```
+```java
     //使用token初始化client
     TuShareClient client = new TuShareClient(token);
     
@@ -24,7 +24,7 @@ TuShare4J-PRO     -     A TuShare Java Client
 ### 进阶用法
 
 #### 字段选择和字段过滤
-```
+```java
         //使用token初始化client
         TuShareClient client = new TuShareClient(token);
         
@@ -44,7 +44,7 @@ TuShare4J-PRO     -     A TuShare Java Client
 
 
 #### 异步调用
-```
+```java
         
         TuShareClient client = new TuShareClient(token);
         
