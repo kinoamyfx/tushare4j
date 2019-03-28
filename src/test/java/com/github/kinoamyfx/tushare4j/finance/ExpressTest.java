@@ -1,0 +1,174 @@
+package com.github.kinoamyfx.tushare4j.finance;
+
+import com.github.kinoamyfx.tushare4j.CodeUtils;
+import org.junit.Test;
+
+public class ExpressTest {
+
+    String content = "<tbody><tr>\n" +
+            "<td>ts_code</td>\n" +
+            "<td>str</td>\n" +
+            "<td>TS股票代码</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>ann_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>公告日期</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>end_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>报告期</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>revenue</td>\n" +
+            "<td>float</td>\n" +
+            "<td>营业收入(元)</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>operate_profit</td>\n" +
+            "<td>float</td>\n" +
+            "<td>营业利润(元)</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>total_profit</td>\n" +
+            "<td>float</td>\n" +
+            "<td>利润总额(元)</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>n_income</td>\n" +
+            "<td>float</td>\n" +
+            "<td>净利润(元)</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>total_assets</td>\n" +
+            "<td>float</td>\n" +
+            "<td>总资产(元)</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>total_hldr_eqy_exc_min_int</td>\n" +
+            "<td>float</td>\n" +
+            "<td>股东权益合计(不含少数股东权益)(元)</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>diluted_eps</td>\n" +
+            "<td>float</td>\n" +
+            "<td>每股收益(摊薄)(元)</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>diluted_roe</td>\n" +
+            "<td>float</td>\n" +
+            "<td>净资产收益率(摊薄)(%)</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>yoy_net_profit</td>\n" +
+            "<td>float</td>\n" +
+            "<td>去年同期修正后净利润</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>bps</td>\n" +
+            "<td>float</td>\n" +
+            "<td>每股净资产</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>yoy_sales</td>\n" +
+            "<td>float</td>\n" +
+            "<td>同比增长率:营业收入</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>yoy_op</td>\n" +
+            "<td>float</td>\n" +
+            "<td>同比增长率:营业利润</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>yoy_tp</td>\n" +
+            "<td>float</td>\n" +
+            "<td>同比增长率:利润总额</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>yoy_dedu_np</td>\n" +
+            "<td>float</td>\n" +
+            "<td>同比增长率:归属母公司股东的净利润</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>yoy_eps</td>\n" +
+            "<td>float</td>\n" +
+            "<td>同比增长率:基本每股收益</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>yoy_roe</td>\n" +
+            "<td>float</td>\n" +
+            "<td>同比增减:加权平均净资产收益率</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>growth_assets</td>\n" +
+            "<td>float</td>\n" +
+            "<td>比年初增长率:总资产</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>yoy_equity</td>\n" +
+            "<td>float</td>\n" +
+            "<td>比年初增长率:归属母公司的股东权益</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>growth_bps</td>\n" +
+            "<td>float</td>\n" +
+            "<td>比年初增长率:归属于母公司股东的每股净资产</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>or_last_year</td>\n" +
+            "<td>float</td>\n" +
+            "<td>去年同期营业收入</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>op_last_year</td>\n" +
+            "<td>float</td>\n" +
+            "<td>去年同期营业利润</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>tp_last_year</td>\n" +
+            "<td>float</td>\n" +
+            "<td>去年同期利润总额</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>np_last_year</td>\n" +
+            "<td>float</td>\n" +
+            "<td>去年同期净利润</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>eps_last_year</td>\n" +
+            "<td>float</td>\n" +
+            "<td>去年同期每股收益</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>open_net_assets</td>\n" +
+            "<td>float</td>\n" +
+            "<td>期初净资产</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>open_bps</td>\n" +
+            "<td>float</td>\n" +
+            "<td>期初每股净资产</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>perf_summary</td>\n" +
+            "<td>str</td>\n" +
+            "<td>业绩简要说明</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>is_audit</td>\n" +
+            "<td>int</td>\n" +
+            "<td>是否审计： 1是 0否</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>remark</td>\n" +
+            "<td>str</td>\n" +
+            "<td>备注</td>\n" +
+            "</tr>\n" +
+            "</tbody>";
+
+    @Test
+    public void codeg() {
+        CodeUtils.codeg3(content);
+    }
+}

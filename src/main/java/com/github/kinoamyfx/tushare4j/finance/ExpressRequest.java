@@ -2,16 +2,10 @@ package com.github.kinoamyfx.tushare4j.finance;
 
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.experimental.Accessors;
 
-@Data
-@Accessors(chain = true)
-public class IncomeRequest implements TsRequest<Income> {
+public class ExpressRequest implements TsRequest<Express> {
 
     @TsParam(name = "ts_code")
-    @NonNull
     private String tsCode;
 
     @TsParam(name = "ann_date")
@@ -26,18 +20,13 @@ public class IncomeRequest implements TsRequest<Income> {
     @TsParam(name = "period")
     private String period;
 
-    @TsParam(name = "report_type")
-    private String reportType;
-
-    @TsParam(name = "comp_type")
-    private String compType;
-
-    public IncomeRequest(@NonNull String tsCode) {
-        this.tsCode = tsCode;
+    @Override
+    public void validate() {
+        //最少有一个不为空
     }
 
     @Override
     public String apiName() {
-        return "income";
+        return "express";
     }
 }

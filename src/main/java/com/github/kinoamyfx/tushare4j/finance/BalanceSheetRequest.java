@@ -8,7 +8,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class IncomeRequest implements TsRequest<Income> {
+public class BalanceSheetRequest implements TsRequest<BalanceSheet> {
 
     @TsParam(name = "ts_code")
     @NonNull
@@ -32,12 +32,12 @@ public class IncomeRequest implements TsRequest<Income> {
     @TsParam(name = "comp_type")
     private String compType;
 
-    public IncomeRequest(@NonNull String tsCode) {
+    public BalanceSheetRequest(@NonNull String tsCode) {
         this.tsCode = tsCode;
     }
 
     @Override
     public String apiName() {
-        return "income";
+        return "balancesheet";
     }
 }
