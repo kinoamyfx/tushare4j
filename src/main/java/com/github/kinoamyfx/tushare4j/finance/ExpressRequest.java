@@ -2,7 +2,11 @@ package com.github.kinoamyfx.tushare4j.finance;
 
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class ExpressRequest implements TsRequest<Express> {
 
     @TsParam(name = "ts_code")
