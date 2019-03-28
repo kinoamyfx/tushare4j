@@ -15,15 +15,8 @@ public class TuShareClientTest {
     public static TuShareClient client;
 
     static {
-        try {
-            Properties properties = new Properties();
-            properties.load(Thread.class.getResourceAsStream("/token.properties"));
-            String token = properties.getProperty("token").trim();
-            client = new TuShareClient(token);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String token = System.getenv("TUSHARE_TOKEN");
+        client = new TuShareClient(token);
     }
 
 
