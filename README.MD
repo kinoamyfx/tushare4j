@@ -7,7 +7,9 @@ TuShare4J-PRO     -     A TuShare Java Client
 ```xml
 ```
 
-### 基本用法
+### 使用方法
+
+#### 直接同步调用
 ```java
     //使用token初始化client
     TuShareClient client = new TuShareClient(token);
@@ -20,8 +22,6 @@ TuShare4J-PRO     -     A TuShare Java Client
     List<KLine> result = client.call(request);
     
 ```
-
-### 进阶用法
 
 #### 字段选择和字段过滤
 ```java
