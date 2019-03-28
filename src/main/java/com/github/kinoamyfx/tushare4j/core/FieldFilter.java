@@ -9,28 +9,28 @@ public class FieldFilter {
     private FieldFilter() {
     }
 
-    public static FieldInclude[] include(String... s) {
-        return Arrays.asList(s).parallelStream().map(FieldInclude::new).toArray(FieldInclude[]::new);
+    public static FieldIncluder[] include(String... s) {
+        return Arrays.asList(s).parallelStream().map(FieldIncluder::new).toArray(FieldIncluder[]::new);
     }
 
-    public static FieldExclude[] exclude(String... s) {
-        return Arrays.asList(s).parallelStream().map(FieldExclude::new).toArray(FieldExclude[]::new);
+    public static FieldExcluder[] exclude(String... s) {
+        return Arrays.asList(s).parallelStream().map(FieldExcluder::new).toArray(FieldExcluder[]::new);
     }
 
-    public static class FieldExclude {
+    public static class FieldExcluder {
         @Getter
         private String name;
 
-        public FieldExclude(String name) {
+        public FieldExcluder(String name) {
             this.name = name;
         }
     }
 
-    public static class FieldInclude {
+    public static class FieldIncluder {
         @Getter
         private String name;
 
-        public FieldInclude(String name) {
+        public FieldIncluder(String name) {
             this.name = name;
         }
     }
