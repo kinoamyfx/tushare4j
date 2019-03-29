@@ -49,14 +49,7 @@ public class TuShareClient {
     }
 
     public <R> List<R> call(TsRequest<R> tsRequest, FieldExcluder... excluders) throws IOException, TuShareException {
-        Class<R> responseType = getResponseType(tsRequest);
-        List<String> fields = resolveTsFields(responseType);
-
-        List<String> excludeFields = Arrays.asList(excluders).parallelStream().map(FieldExcluder::getName).collect(Collectors.toList());
-
-        fields.removeAll(excludeFields);
-
-        return call(tsRequest, fields);
+        return call(tsRequest, excludeFields(tsRequest, excluders));
     }
 
     private <R> List<R> call(TsRequest<R> tsRequest, List<String> fields) throws IOException, TuShareException {
@@ -111,6 +104,7 @@ public class TuShareClient {
      */
     private <R> CompletionStage<List<R>> asyncCall(TsRequest<R> tsRequest, List<String> fields) {
         CompletableFuture<List<R>> future = new CompletableFuture<>();
+
         ThreadPool.io().submit(() -> {
             try {
                 List<R> value = call(tsRequest, fields);
@@ -147,16 +141,17 @@ public class TuShareClient {
         return asyncCall(tsRequest, fields);
     }
 
-
     public <R> CompletionStage<List<R>> asyncCall(TsRequest<R> tsRequest, FieldExcluder... excluders) {
+        List<String> fields = excludeFields(tsRequest, excluders);
+        return asyncCall(tsRequest, fields);
+    }
+
+    private <R> List<String> excludeFields(TsRequest<R> tsRequest, FieldExcluder[] excluders) {
         Class<R> responseType = getResponseType(tsRequest);
         List<String> fields = resolveTsFields(responseType);
-
         List<String> excludeFields = Arrays.asList(excluders).parallelStream().map(FieldExcluder::getName).collect(Collectors.toList());
-
         fields.removeAll(excludeFields);
-
-        return asyncCall(tsRequest, fields);
+        return fields;
     }
 }
 
