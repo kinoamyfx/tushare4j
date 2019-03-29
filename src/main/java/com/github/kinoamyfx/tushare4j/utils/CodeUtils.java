@@ -1,4 +1,4 @@
-package com.github.kinoamyfx.tushare4j;
+package com.github.kinoamyfx.tushare4j.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

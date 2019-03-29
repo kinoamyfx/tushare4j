@@ -1,6 +1,6 @@
 package com.github.kinoamyfx.tushare4j.finance;
 
-import com.github.kinoamyfx.tushare4j.CodeUtils;
+import com.github.kinoamyfx.tushare4j.utils.CodeUtils;
 
 public class ExpressTest {
 
