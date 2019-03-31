@@ -17,7 +17,7 @@ public class StockDailyRequestTest {
 
         StockDailyRequest request = new StockDailyRequest();
 
-        request.setTsCode("000001.SZ");
+        request.tsCode("000001.SZ");
 
         List<KLine> call = TuShareClientTest.client.call(request);
 

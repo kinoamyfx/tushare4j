@@ -13,7 +13,7 @@ public class TradeCalendarRequestTest {
     @Test
     public void testRequest() throws IOException, TuShareException {
 
-        List<TradeCalendar> call = TuShareClientTest.client.call(new TradeCalendarRequest().setExchange(Exchange.SSE));
+        List<TradeCalendar> call = TuShareClientTest.client.call(new TradeCalendarRequest().exchange(Exchange.SSE));
 
         Assert.assertFalse(call.isEmpty());
     }

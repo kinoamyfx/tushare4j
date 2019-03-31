@@ -1,11 +1,11 @@
-package com.github.kinoamyfx.tushare4j.market;
+package com.github.kinoamyfx.tushare4j.option;
 
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import lombok.Data;
 
 @Data
-public class StockDailyRequest implements TsRequest<KLine> {
+public class OptionDailyRequest implements TsRequest<OptionDaily> {
 
     @TsParam(name = "ts_code")
     private String tsCode;
@@ -19,15 +19,12 @@ public class StockDailyRequest implements TsRequest<KLine> {
     @TsParam(name = "end_date")
     private String endDate;
 
-    @Override
-    public String apiName() {
-        return "daily";
-    }
+    @TsParam(name = "exchange")
+    private String exchange;
+
 
     @Override
-    public void validate() {
-        if (tsCode == null && tradeDate == null) {
-            throw new IllegalArgumentException(" ts_code,trade_date, need at least one");
-        }
+    public String apiName() {
+        return "opt_daily";
     }
 }

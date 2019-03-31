@@ -14,7 +14,7 @@ public class StockBasicListRequestTest {
     @Test
     public void testCall() throws IOException, TuShareException {
         StockBasicListRequest request = new StockBasicListRequest();
-        request.setListStatus(StockBasicListRequest.ListStatus.L);
+        request.listStatus(StockBasicListRequest.ListStatus.L);
 
         List<StockBasic> call = client.call(request);
 

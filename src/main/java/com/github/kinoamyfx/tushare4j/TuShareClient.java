@@ -43,7 +43,7 @@ public class TuShareClient {
     public <R> List<R> call(TsRequest<R> tsRequest, FieldIncluder... includers) throws IOException, TuShareException {
 
         List<String> fields =
-                Arrays.asList(includers).parallelStream().map(FieldIncluder::getName).collect(Collectors.toList());
+                Arrays.asList(includers).parallelStream().map(FieldIncluder::name).collect(Collectors.toList());
 
         return call(tsRequest, fields);
     }
@@ -86,12 +86,12 @@ public class TuShareClient {
         TsResponseWrapper tsResponseWrapper = JsonUtils.parseObject(s, TsResponseWrapper.class);
 
         //当服务器返回异常码时
-        if (tsResponseWrapper.getCode() != 0 || tsResponseWrapper.getData() == null) {
-            throw new TuShareException(tsResponseWrapper.getCode(), tsResponseWrapper.getMsg());
+        if (tsResponseWrapper.code() != 0 || tsResponseWrapper.data() == null) {
+            throw new TuShareException(tsResponseWrapper.code(), tsResponseWrapper.msg());
         }
 
         //将array json 变成 object json
-        String itemsJson = tsResponseWrapper.getData().toString();
+        String itemsJson = tsResponseWrapper.data().toString();
 
         //返回
         return JsonUtils.parseList(itemsJson, getResponseType(tsRequest));
@@ -136,7 +136,7 @@ public class TuShareClient {
     public <R> CompletionStage<List<R>> asyncCall(TsRequest<R> tsRequest, FieldIncluder... includers) {
 
         List<String> fields =
-                Arrays.asList(includers).parallelStream().map(FieldIncluder::getName).collect(Collectors.toList());
+                Arrays.asList(includers).parallelStream().map(FieldIncluder::name).collect(Collectors.toList());
 
         return asyncCall(tsRequest, fields);
     }
@@ -149,7 +149,7 @@ public class TuShareClient {
     private <R> List<String> excludeFields(TsRequest<R> tsRequest, FieldExcluder[] excluders) {
         Class<R> responseType = getResponseType(tsRequest);
         List<String> fields = resolveTsFields(responseType);
-        List<String> excludeFields = Arrays.asList(excluders).parallelStream().map(FieldExcluder::getName).collect(Collectors.toList());
+        List<String> excludeFields = Arrays.asList(excluders).parallelStream().map(FieldExcluder::name).collect(Collectors.toList());
         fields.removeAll(excludeFields);
         return fields;
     }

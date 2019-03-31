@@ -1,0 +1,121 @@
+package com.github.kinoamyfx.tushare4j.rate;
+
+import com.github.kinoamyfx.tushare4j.CodeUtils;
+import org.junit.Test;
+
+public class ShiborQuoteTest {
+    String c = "<tbody><tr>\n" +
+            "<td>date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>日期</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>bank</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>报价银行</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>on_b</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>隔夜_Bid</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>on_a</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>隔夜_Ask</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>1w_b</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>1周_Bid</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>1w_a</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>1周_Ask</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>2w_b</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>2周_Bid</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>2w_a</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>2周_Ask</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>1m_b</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>1月_Bid</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>1m_a</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>1月_Ask</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>3m_b</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>3月_Bid</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>3m_a</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>3月_Ask</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>6m_b</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>6月_Bid</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>6m_a</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>6月_Ask</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>9m_b</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>9月_Bid</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>9m_a</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>9月_Ask</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>1y_b</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>1年_Bid</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>1y_a</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>1年_Ask</td>\n" +
+            "</tr>\n" +
+            "</tbody>";
+
+    @Test
+    public void codeg() {
+        CodeUtils.codeg4(c);
+    }
+}

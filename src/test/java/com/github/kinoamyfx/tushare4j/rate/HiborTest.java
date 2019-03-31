@@ -1,75 +1,62 @@
-package com.github.kinoamyfx.tushare4j.fund;
+package com.github.kinoamyfx.tushare4j.rate;
 
 import com.github.kinoamyfx.tushare4j.CodeUtils;
 import org.junit.Test;
 
-public class FundDailyTest {
-
+public class HiborTest {
     String content = "<tbody><tr>\n" +
-            "<td>ts_code</td>\n" +
+            "<td>date</td>\n" +
             "<td>str</td>\n" +
             "<td>Y</td>\n" +
-            "<td>TS代码</td>\n" +
+            "<td>日期</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>trade_date</td>\n" +
-            "<td>str</td>\n" +
-            "<td>Y</td>\n" +
-            "<td>交易日期</td>\n" +
-            "</tr>\n" +
-            "<tr>\n" +
-            "<td>open</td>\n" +
+            "<td>on</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>开盘价(元)</td>\n" +
+            "<td>隔夜</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>high</td>\n" +
+            "<td>1w</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>最高价(元)</td>\n" +
+            "<td>1周</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>low</td>\n" +
+            "<td>2w</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>最低价(元)</td>\n" +
+            "<td>2周</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>close</td>\n" +
+            "<td>1m</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>收盘价(元)</td>\n" +
+            "<td>1个月</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>pre_close</td>\n" +
+            "<td>2m</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>昨收盘价(元)</td>\n" +
+            "<td>2个月</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>change</td>\n" +
+            "<td>3m</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>涨跌额(元)</td>\n" +
+            "<td>3个月</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>pct_chg</td>\n" +
+            "<td>6m</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>涨跌幅(%)</td>\n" +
+            "<td>6个月</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>vol</td>\n" +
+            "<td>12m</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>成交量(手)</td>\n" +
-            "</tr>\n" +
-            "<tr>\n" +
-            "<td>amount</td>\n" +
-            "<td>float</td>\n" +
-            "<td>Y</td>\n" +
-            "<td>成交额(千元)</td>\n" +
+            "<td>12个月</td>\n" +
             "</tr>\n" +
             "</tbody>";
 

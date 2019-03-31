@@ -1,0 +1,121 @@
+package com.github.kinoamyfx.tushare4j.option;
+
+import com.github.kinoamyfx.tushare4j.CodeUtils;
+import org.junit.Test;
+
+public class OptionBasicTest {
+    String content = "<tbody><tr>\n" +
+            "<td>ts_code</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>TS代码</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>exchange</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>交易市场</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>name</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>合约名称</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>per_unit</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>合约单位</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>opt_code</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>标准合约代码</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>opt_type</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>合约类型</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>call_put</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>期权类型</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>exercise_type</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>行权方式</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>exercise_price</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>行权价格</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>s_month</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>结算月</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>maturity_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>到期日</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>list_price</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>挂牌基准价</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>list_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>开始交易日期</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>delist_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>最后交易日期</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>last_edate</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>最后行权日期</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>last_ddate</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>最后交割日期</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>quote_unit</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>报价单位</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>min_price_chg</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>最小价格波幅</td>\n" +
+            "</tr>\n" +
+            "</tbody>";
+
+    @Test
+    public void codeg() {
+        CodeUtils.codeg4(content);
+    }
+}

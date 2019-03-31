@@ -1,11 +1,15 @@
-package com.github.kinoamyfx.tushare4j.market;
+package com.github.kinoamyfx.tushare4j.fund;
 
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
+import com.github.kinoamyfx.tushare4j.market.KLine;
+import com.github.kinoamyfx.tushare4j.utils.ValidateUtils;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Data
-public class StockDailyRequest implements TsRequest<KLine> {
+@Accessors(chain = true)
+public class FundDailyRequest implements TsRequest<KLine> {
 
     @TsParam(name = "ts_code")
     private String tsCode;
@@ -21,13 +25,11 @@ public class StockDailyRequest implements TsRequest<KLine> {
 
     @Override
     public String apiName() {
-        return "daily";
+        return "fund_daily";
     }
 
     @Override
     public void validate() {
-        if (tsCode == null && tradeDate == null) {
-            throw new IllegalArgumentException(" ts_code,trade_date, need at least one");
-        }
+        ValidateUtils.eitherNotNull(tsCode, tradeDate);
     }
 }

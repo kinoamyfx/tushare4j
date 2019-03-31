@@ -1,15 +1,14 @@
-package com.github.kinoamyfx.tushare4j.fund;
+package com.github.kinoamyfx.tushare4j.future;
 
 import com.github.kinoamyfx.tushare4j.CodeUtils;
 import org.junit.Test;
 
-public class FundDailyTest {
-
+public class FutureSettleTest {
     String content = "<tbody><tr>\n" +
             "<td>ts_code</td>\n" +
             "<td>str</td>\n" +
             "<td>Y</td>\n" +
-            "<td>TS代码</td>\n" +
+            "<td>合约代码</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
             "<td>trade_date</td>\n" +
@@ -18,58 +17,64 @@ public class FundDailyTest {
             "<td>交易日期</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>open</td>\n" +
+            "<td>settle</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>开盘价(元)</td>\n" +
+            "<td>结算价</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>high</td>\n" +
+            "<td>trading_fee_rate</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>最高价(元)</td>\n" +
+            "<td>交易手续费率</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>low</td>\n" +
+            "<td>trading_fee</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>最低价(元)</td>\n" +
+            "<td>交易手续费</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>close</td>\n" +
+            "<td>delivery_fee</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>收盘价(元)</td>\n" +
+            "<td>交割手续费</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>pre_close</td>\n" +
+            "<td>b_hedging_margin_rate</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>昨收盘价(元)</td>\n" +
+            "<td>买套保交易保证金率</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>change</td>\n" +
+            "<td>s_hedging_margin_rate</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>涨跌额(元)</td>\n" +
+            "<td>卖套保交易保证金率</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>pct_chg</td>\n" +
+            "<td>long_margin_rate</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>涨跌幅(%)</td>\n" +
+            "<td>买投机交易保证金率</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>vol</td>\n" +
+            "<td>short_margin_rate</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>成交量(手)</td>\n" +
+            "<td>卖投机交易保证金率</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>amount</td>\n" +
+            "<td>offset_today_fee</td>\n" +
             "<td>float</td>\n" +
-            "<td>Y</td>\n" +
-            "<td>成交额(千元)</td>\n" +
+            "<td>N</td>\n" +
+            "<td>平今仓手续率</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>exchange</td>\n" +
+            "<td>str</td>\n" +
+            "<td>N</td>\n" +
+            "<td>交易所</td>\n" +
             "</tr>\n" +
             "</tbody>";
 
