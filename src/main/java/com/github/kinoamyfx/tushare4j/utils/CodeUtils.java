@@ -15,7 +15,7 @@ public class CodeUtils {
             System.out.println("    /**\n" +
                     "     * " + matcher.group(3) + " \n" +
                     "     */\n" +
-                    "    private " + (matcher.group(2).equals("str") ? "String" : "Float") + " " + matcher.group(1) + ";");
+                    "    private " + toType(matcher.group(2)) + " " + matcher.group(1) + ";");
         }
     }
 
@@ -27,8 +27,21 @@ public class CodeUtils {
             System.out.println("    /**\n" +
                     "     * " + matcher.group(4) + " \n" +
                     "     */\n" +
-                    "    private " + (matcher.group(2).equals("str") ? "String" : "Float") + " " + matcher.group(1) + ";");
+                    "    private " + toType(matcher.group(2)) + " " + matcher.group(1) + ";");
         }
     }
 
+
+    private static String toType(String s) {
+        switch (s) {
+            case "int":
+                return "Integer";
+            case "float":
+                return "Float";
+            case "str":
+                return "String";
+            default:
+                throw new UnsupportedOperationException();
+        }
+    }
 }

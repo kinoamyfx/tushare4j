@@ -127,7 +127,7 @@ public class Express {
     /**
      * 是否审计： 1是 0否
      */
-    private Float is_audit;
+    private Integer is_audit;
     /**
      * 备注
      */
