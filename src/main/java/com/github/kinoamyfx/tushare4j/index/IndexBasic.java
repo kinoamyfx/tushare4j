@@ -33,6 +33,7 @@ public class IndexBasic {
 
     @JsonProperty("weight_rule")
     private String weightRule;
+
     private String desc;
 
     @JsonProperty("exp_date")

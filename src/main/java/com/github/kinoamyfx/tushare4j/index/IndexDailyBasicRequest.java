@@ -7,10 +7,10 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class IndexWeightRequest implements TsRequest<IndexWeight> {
+public class IndexDailyBasicRequest implements TsRequest<IndexDailyBasic> {
 
-    @TsParam(name = "index_code")
-    private String indexCode;
+    @TsParam(name = "ts_code")
+    private String tsCode;
 
     @TsParam(name = "trade_date")
     private String tradeDate;
@@ -23,12 +23,12 @@ public class IndexWeightRequest implements TsRequest<IndexWeight> {
 
     @Override
     public String apiName() {
-        return "index_weight";
+        return "index_dailybasic";
     }
 
     @Override
     public void validate() {
-        if (indexCode == null && tradeDate == null) {
+        if (tsCode == null && tradeDate == null) {
             throw new IllegalArgumentException("need at least one param");
         }
     }
