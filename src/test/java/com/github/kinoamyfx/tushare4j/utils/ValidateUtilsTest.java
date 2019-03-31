@@ -13,4 +13,6 @@ public class ValidateUtilsTest {
     public void testNull() {
         ValidateUtils.eitherNotNull(null, null, null);
     }
+
+
 }

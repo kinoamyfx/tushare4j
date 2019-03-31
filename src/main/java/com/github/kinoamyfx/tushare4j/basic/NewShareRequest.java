@@ -18,5 +18,4 @@ public class NewShareRequest implements TsRequest<NewShare> {
     public String apiName() {
         return "new_share";
     }
-
 }

@@ -4,10 +4,8 @@ import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import com.github.kinoamyfx.tushare4j.enums.Exchange;
 import lombok.Data;
-import lombok.experimental.Accessors;
 
 @Data
-@Accessors(chain = true)
 public class StockCompanyRequest implements TsRequest<StockCompany> {
 
     @TsParam(name = "exchange")

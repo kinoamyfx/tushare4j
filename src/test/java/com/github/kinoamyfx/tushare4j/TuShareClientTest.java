@@ -37,8 +37,8 @@ public class TuShareClientTest {
         Assert.assertFalse(call.isEmpty());
 
         call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.ts_code()));
-        call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.ts_code()));
-        call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.ts_code()));
+        call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.open()));
+        call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.trade_date()));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class TuShareClientTest {
         call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.pre_close()));
     }
 
-    @Test
+    //    @Test
     public void testAsync() {
         StockDailyRequest request = new StockDailyRequest().tsCode("000001.SZ");
         CompletionStage<List<KLine>> stage = TuShareClientTest.client.asyncCall(request);

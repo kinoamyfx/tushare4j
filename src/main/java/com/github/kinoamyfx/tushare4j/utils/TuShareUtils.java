@@ -63,6 +63,11 @@ public class TuShareUtils {
         Map<String, Object> required = new HashMap<>();
 
         for (Field f : o.getClass().getDeclaredFields()) {
+
+            if (f.isSynthetic()) {
+                continue;
+            }
+
             Optional.ofNullable(f.getAnnotation(TsParam.class)).ifPresent(tsParam -> {
                 f.setAccessible(true);
                 try {
@@ -100,12 +105,16 @@ public class TuShareUtils {
         return
                 Stream.of(clz.getDeclaredFields())
                         .map(field -> {
+                            if (field.isSynthetic()) {
+                                return null;
+                            }
                             JsonProperty annotation = field.getAnnotation(JsonProperty.class);
                             if (annotation != null) {
                                 return annotation.value();
                             }
                             return field.getName();
                         })
+                        .filter(Objects::nonNull)
                         .collect(Collectors.toList());
     }
 }

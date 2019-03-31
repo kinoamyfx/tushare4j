@@ -1,5 +1,11 @@
 package com.github.kinoamyfx.tushare4j;
 
+import org.junit.Assert;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,5 +49,45 @@ public class CodeUtils {
             default:
                 throw new UnsupportedOperationException();
         }
+    }
+
+
+    public static void assertDataMethod(Object o) {
+        Assert.assertEquals(o, o);
+        Assert.assertNotNull(o.hashCode());
+        Assert.assertNotNull(o.toString());
+    }
+
+    public static void assertFields(List results, List<String> excludes) {
+
+        Assert.assertFalse(results.isEmpty());
+
+        results.parallelStream().limit(3).forEach(result -> {
+            try {
+                Field[] fields = result.getClass().getDeclaredFields();
+
+                for (Field field : fields) {
+                    if (field.isSynthetic()) {
+                        continue;
+                    }
+
+                    Method set = result.getClass().getDeclaredMethod(field.getName(), field.getType());
+                    Method get = result.getClass().getDeclaredMethod(field.getName());
+
+                    Object v = get.invoke(result);
+
+                    if (excludes.contains(field.getName())) {
+                        Assert.assertNotNull(set.invoke(result, v));
+                        continue;
+                    }
+
+                    Assert.assertNotNull(v);
+                    Assert.assertNotNull(set.invoke(result, v));
+                    assertDataMethod(result);
+                }
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 }
