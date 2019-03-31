@@ -19,7 +19,7 @@ public class TradeCalendarRequest implements TsRequest<TradeCalendar> {
     private TsDate endDate;
 
     @TsParam(name = "is_open")
-    private Boolean isOpen;
+    private Boolean openFlag;
 
     @Override
     public String apiName() {

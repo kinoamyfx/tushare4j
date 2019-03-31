@@ -1,5 +1,6 @@
 package com.github.kinoamyfx.tushare4j;
 
+import com.github.kinoamyfx.tushare4j.utils.JsonUtils;
 import org.junit.Assert;
 
 import java.lang.reflect.Field;
@@ -53,8 +54,9 @@ public class CodeUtils {
 
 
     public static void assertDataMethod(Object o) {
-        Assert.assertEquals(o, o);
-        Assert.assertNotNull(o.hashCode());
+        Object copy = JsonUtils.deepCopy(o);
+        Assert.assertEquals(o, copy);
+        Assert.assertEquals(o.hashCode(), copy.hashCode());
         Assert.assertNotNull(o.toString());
     }
 
@@ -62,7 +64,7 @@ public class CodeUtils {
 
         Assert.assertFalse(results.isEmpty());
 
-        results.parallelStream().limit(3).forEach(result -> {
+        results.parallelStream().limit(10).forEach(result -> {
             try {
                 Field[] fields = result.getClass().getDeclaredFields();
 
@@ -76,7 +78,7 @@ public class CodeUtils {
 
                     Object v = get.invoke(result);
 
-                    if (excludes.contains(field.getName())) {
+                    if (v == null && excludes.contains(field.getName())) {
                         Assert.assertNotNull(set.invoke(result, v));
                         continue;
                     }

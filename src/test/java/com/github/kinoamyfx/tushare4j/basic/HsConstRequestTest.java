@@ -15,7 +15,9 @@ public class HsConstRequestTest {
     @Test
     public void test() throws IOException, TuShareException {
 
-        HsConstRequest request = new HsConstRequest(HsType.SH)
+        HsConstRequest request = new HsConstRequest()
+                .hsType(HsType.SZ)
+                .hsType(HsType.SH)
                 .isNew(1);
 
         Assert.assertTrue(request.canEqual(request));

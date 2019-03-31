@@ -23,12 +23,12 @@ public class TradeCalendarRequestTest {
                 .exchange(Exchange.SSE)
                 .startDate(TsDate.today().minus(20, ChronoUnit.DAYS))
                 .endDate(TsDate.today())
-                .isOpen(true);
+                .openFlag(true);
 
         Assert.assertNotNull(request.exchange());
         Assert.assertNotNull(request.startDate());
         Assert.assertNotNull(request.endDate());
-        Assert.assertTrue(request.isOpen());
+        Assert.assertTrue(request.openFlag());
 
         CodeUtils.assertDataMethod(request);
 

@@ -18,7 +18,9 @@ public class StockCompanyRequestTest {
     @Test
     public void test() throws IOException, TuShareException {
         StockCompanyRequest request = new StockCompanyRequest()
-                .exchange(Exchange.SZSE);
+                .exchange(Exchange.SZSE)
+                .exchange(Exchange.SSE);
+
 
         Assert.assertNotNull(request.exchange());
         CodeUtils.assertDataMethod(request);
