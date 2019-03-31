@@ -1,33 +1,30 @@
-package com.github.kinoamyfx.tushare4j.kline;
+package com.github.kinoamyfx.tushare4j.market;
 
 import com.github.kinoamyfx.tushare4j.CodeUtils;
 import com.github.kinoamyfx.tushare4j.core.TsDate;
 import com.github.kinoamyfx.tushare4j.core.TuShareException;
-import com.github.kinoamyfx.tushare4j.market.KLine;
-import com.github.kinoamyfx.tushare4j.market.StockDailyRequest;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.List;
 
 import static com.github.kinoamyfx.tushare4j.TuShareClientTest.client;
 
-public class StockDailyRequestTest {
+public class StockWeeklyRequestTest {
 
     @Test
     public void test() throws IOException, TuShareException {
 
-        StockDailyRequest request = new StockDailyRequest()
+        StockWeeklyRequest request = new StockWeeklyRequest()
                 .tsCode("000001.SZ")
-                .startDate(TsDate.today().minus(30, ChronoUnit.DAYS))
-                .endDate(TsDate.today());
+                .startDate(TsDate.of(2019, 2, 15))
+                .endDate(TsDate.of(2019, 3, 15));
 
         Assert.assertEquals(request.tsCode(), "000001.SZ");
-        Assert.assertEquals(request.startDate(), TsDate.today().minus(30, ChronoUnit.DAYS));
-        Assert.assertEquals(request.endDate(), TsDate.today());
+        Assert.assertEquals(request.startDate(), TsDate.of(2019, 2, 15));
+        Assert.assertEquals(request.endDate(), TsDate.of(2019, 3, 15));
 
         CodeUtils.assertDataMethod(request);
 
@@ -35,7 +32,7 @@ public class StockDailyRequestTest {
 
         CodeUtils.assertFields(call, Collections.emptyList());
 
-        request = new StockDailyRequest()
+        request = new StockWeeklyRequest()
                 .tsCode("000001.SZ")
                 .tradeDate(TsDate.of(2019, 3, 29));
 
@@ -49,7 +46,7 @@ public class StockDailyRequestTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testNull() throws IOException, TuShareException {
-        StockDailyRequest request = new StockDailyRequest();
+        StockWeeklyRequest request = new StockWeeklyRequest();
         List<KLine> call = client.call(request);
     }
 }

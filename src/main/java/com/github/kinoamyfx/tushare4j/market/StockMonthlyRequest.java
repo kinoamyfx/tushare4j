@@ -1,35 +1,30 @@
 package com.github.kinoamyfx.tushare4j.market;
 
+import com.github.kinoamyfx.tushare4j.core.TsDate;
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import lombok.Data;
-import lombok.experimental.Accessors;
+
+import static com.github.kinoamyfx.tushare4j.core.TsParam.RequiredType.ALTERNATIVE;
 
 @Data
-@Accessors(chain = true)
 public class StockMonthlyRequest implements TsRequest<KLine> {
 
-    @TsParam(name = "ts_code")
+    @TsParam(name = "ts_code", required = ALTERNATIVE)
     private String tsCode;
 
-    @TsParam(name = "trade_date")
-    private String tradeDate;
+    @TsParam(name = "trade_date", required = ALTERNATIVE)
+    private TsDate tradeDate;
 
     @TsParam(name = "start_date")
-    private String startDate;
+    private TsDate startDate;
 
     @TsParam(name = "end_date")
-    private String endDate;
+    private TsDate endDate;
 
     @Override
     public String apiName() {
         return "monthly";
     }
 
-    @Override
-    public void validate() {
-        if (tsCode == null && tradeDate == null) {
-            throw new IllegalArgumentException(" ts_code,trade_date, need at least one");
-        }
-    }
 }

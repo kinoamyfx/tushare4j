@@ -25,11 +25,6 @@ public class ExpressRequest implements TsRequest<Express> {
     private String period;
 
     @Override
-    public void validate() {
-        //最少有一个不为空
-    }
-
-    @Override
     public String apiName() {
         return "express";
     }

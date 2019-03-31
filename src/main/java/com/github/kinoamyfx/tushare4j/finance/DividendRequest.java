@@ -26,11 +26,6 @@ public class DividendRequest implements TsRequest<Dividend> {
 
 
     @Override
-    public void validate() {
-        //至少一个不为空
-    }
-
-    @Override
     public String apiName() {
         return "dividend";
     }

@@ -26,10 +26,4 @@ public class IndexDailyBasicRequest implements TsRequest<IndexDailyBasic> {
         return "index_dailybasic";
     }
 
-    @Override
-    public void validate() {
-        if (tsCode == null && tradeDate == null) {
-            throw new IllegalArgumentException("need at least one param");
-        }
-    }
 }

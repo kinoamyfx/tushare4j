@@ -19,10 +19,4 @@ public class FundNetValueRequest implements TsRequest<FundNetValue> {
         return "fund_nav";
     }
 
-    @Override
-    public void validate() {
-        if (tsCode == null && endDate == null) {
-            throw new IllegalArgumentException("need at least one param");
-        }
-    }
 }

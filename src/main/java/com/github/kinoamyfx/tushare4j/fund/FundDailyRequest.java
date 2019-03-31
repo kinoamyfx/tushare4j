@@ -3,7 +3,6 @@ package com.github.kinoamyfx.tushare4j.fund;
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import com.github.kinoamyfx.tushare4j.market.KLine;
-import com.github.kinoamyfx.tushare4j.utils.ValidateUtils;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -28,8 +27,4 @@ public class FundDailyRequest implements TsRequest<KLine> {
         return "fund_daily";
     }
 
-    @Override
-    public void validate() {
-        ValidateUtils.eitherNotNull(tsCode, tradeDate);
-    }
 }

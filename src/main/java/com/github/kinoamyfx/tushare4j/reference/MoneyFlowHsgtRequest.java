@@ -24,8 +24,4 @@ public class MoneyFlowHsgtRequest implements TsRequest<MoneyFlowHsgt> {
         return "moneyflow_hsgt";
     }
 
-    @Override
-    public void validate() {
-
-    }
 }

@@ -23,11 +23,4 @@ public class SuspendRequest implements TsRequest<Suspend> {
         return "suspend";
     }
 
-    @Override
-    public void validate() {
-
-        if (tsCode == null && suspendDate == null && resumeDate == null) {
-            throw new IllegalArgumentException("ts_code,suspend_date,resume_date : need at least select one");
-        }
-    }
 }

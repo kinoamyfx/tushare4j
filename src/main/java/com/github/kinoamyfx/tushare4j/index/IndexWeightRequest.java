@@ -26,10 +26,4 @@ public class IndexWeightRequest implements TsRequest<IndexWeight> {
         return "index_weight";
     }
 
-    @Override
-    public void validate() {
-        if (indexCode == null && tradeDate == null) {
-            throw new IllegalArgumentException("need at least one param");
-        }
-    }
 }
