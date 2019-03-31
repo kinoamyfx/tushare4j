@@ -1,15 +1,15 @@
-package com.github.kinoamyfx.tushare4j.reference;
+package com.github.kinoamyfx.tushare4j.fund;
 
 import com.github.kinoamyfx.tushare4j.CodeUtils;
 import org.junit.Test;
 
-public class PledgeDetailTest {
+public class FundDividendTest {
 
     String content = "<tbody><tr>\n" +
             "<td>ts_code</td>\n" +
             "<td>str</td>\n" +
             "<td>Y</td>\n" +
-            "<td>TS股票代码</td>\n" +
+            "<td>TS代码</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
             "<td>ann_date</td>\n" +
@@ -18,76 +18,88 @@ public class PledgeDetailTest {
             "<td>公告日期</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>holder_name</td>\n" +
+            "<td>imp_anndate</td>\n" +
             "<td>str</td>\n" +
             "<td>Y</td>\n" +
-            "<td>股东名称</td>\n" +
+            "<td>分红实施公告日</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>pledge_amount</td>\n" +
+            "<td>base_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>分配收益基准日</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>div_proc</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>方案进度</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>record_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>权益登记日</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>ex_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>除息日</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>pay_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>派息日</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>earpay_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>收益支付日</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>net_ex_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>净值除权日</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>div_cash</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>质押数量</td>\n" +
+            "<td>每股派息(元)</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>start_date</td>\n" +
-            "<td>str</td>\n" +
-            "<td>Y</td>\n" +
-            "<td>质押开始日期</td>\n" +
-            "</tr>\n" +
-            "<tr>\n" +
-            "<td>end_date</td>\n" +
-            "<td>str</td>\n" +
-            "<td>Y</td>\n" +
-            "<td>质押结束日期</td>\n" +
-            "</tr>\n" +
-            "<tr>\n" +
-            "<td>is_release</td>\n" +
-            "<td>str</td>\n" +
-            "<td>Y</td>\n" +
-            "<td>是否已解押</td>\n" +
-            "</tr>\n" +
-            "<tr>\n" +
-            "<td>release_date</td>\n" +
-            "<td>str</td>\n" +
-            "<td>Y</td>\n" +
-            "<td>解押日期</td>\n" +
-            "</tr>\n" +
-            "<tr>\n" +
-            "<td>pledgor</td>\n" +
-            "<td>str</td>\n" +
-            "<td>Y</td>\n" +
-            "<td>质押方</td>\n" +
-            "</tr>\n" +
-            "<tr>\n" +
-            "<td>holding_amount</td>\n" +
+            "<td>base_unit</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>持股总数</td>\n" +
+            "<td>基准基金份额(万份)</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>pledged_amount</td>\n" +
+            "<td>ear_distr</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>质押总数</td>\n" +
+            "<td>可分配收益(元)</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>p_total_ratio</td>\n" +
+            "<td>ear_amount</td>\n" +
             "<td>float</td>\n" +
             "<td>Y</td>\n" +
-            "<td>本次质押占总股本比例</td>\n" +
+            "<td>收益分配金额(元)</td>\n" +
             "</tr>\n" +
             "<tr>\n" +
-            "<td>h_total_ratio</td>\n" +
-            "<td>float</td>\n" +
-            "<td>Y</td>\n" +
-            "<td>持股总数占总股本比例</td>\n" +
-            "</tr>\n" +
-            "<tr>\n" +
-            "<td>is_buyback</td>\n" +
+            "<td>account_date</td>\n" +
             "<td>str</td>\n" +
             "<td>Y</td>\n" +
-            "<td>是否回购</td>\n" +
+            "<td>红利再投资到账日</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>base_year</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>份额基准年度</td>\n" +
             "</tr>\n" +
             "</tbody>";
 

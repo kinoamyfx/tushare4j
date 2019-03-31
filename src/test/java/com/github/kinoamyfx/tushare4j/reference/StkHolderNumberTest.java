@@ -1,6 +1,6 @@
 package com.github.kinoamyfx.tushare4j.reference;
 
-import com.github.kinoamyfx.tushare4j.utils.CodeUtils;
+import com.github.kinoamyfx.tushare4j.CodeUtils;
 import org.junit.Test;
 
 public class StkHolderNumberTest {

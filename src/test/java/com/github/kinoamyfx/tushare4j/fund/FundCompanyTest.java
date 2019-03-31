@@ -1,0 +1,121 @@
+package com.github.kinoamyfx.tushare4j.fund;
+
+import com.github.kinoamyfx.tushare4j.CodeUtils;
+import org.junit.Test;
+
+public class FundCompanyTest {
+    String content = "<tbody><tr>\n" +
+            "<td>name</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>基金公司名称</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>shortname</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>简称</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>short_enname</td>\n" +
+            "<td>str</td>\n" +
+            "<td>N</td>\n" +
+            "<td>英文缩写</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>province</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>省份</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>city</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>城市</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>address</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>注册地址</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>phone</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>电话</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>office</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>办公地址</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>website</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>公司网址</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>chairman</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>法人代表</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>manager</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>总经理</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>reg_capital</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>注册资本</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>setup_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>成立日期</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>end_date</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>公司终止日期</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>employees</td>\n" +
+            "<td>float</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>员工总数</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>main_business</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>主要产品及业务</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>org_code</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>组织机构代码</td>\n" +
+            "</tr>\n" +
+            "<tr>\n" +
+            "<td>credit_code</td>\n" +
+            "<td>str</td>\n" +
+            "<td>Y</td>\n" +
+            "<td>统一社会信用代码</td>\n" +
+            "</tr>\n" +
+            "</tbody>";
+
+    @Test
+    public void codeg() {
+        CodeUtils.codeg4(content);
+    }
+}
