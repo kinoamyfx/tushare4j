@@ -10,5 +10,11 @@ public @interface TsParam {
 
     String name();
 
-    boolean required() default false;
+    RequiredType required() default RequiredType.NOT;
+
+    enum RequiredType {
+        NOT,
+        ALTERNATIVE,
+        REQUIRED
+    }
 }

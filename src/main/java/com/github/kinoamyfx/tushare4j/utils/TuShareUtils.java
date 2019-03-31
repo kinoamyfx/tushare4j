@@ -13,13 +13,13 @@ import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static com.github.kinoamyfx.tushare4j.core.TsParam.RequiredType.ALTERNATIVE;
+import static com.github.kinoamyfx.tushare4j.core.TsParam.RequiredType.REQUIRED;
 
 @Slf4j
 @UtilityClass
@@ -60,14 +60,20 @@ public class TuShareUtils {
 
         Map<String, String> params = new HashMap<>();
 
+        Map<String, Object> required = new HashMap<>();
+
         for (Field f : o.getClass().getDeclaredFields()) {
             Optional.ofNullable(f.getAnnotation(TsParam.class)).ifPresent(tsParam -> {
                 f.setAccessible(true);
                 try {
                     Object value = f.get(o);
 
-                    if (tsParam.required() && value == null) {
+                    if (tsParam.required() == REQUIRED && value == null) {
                         throw new IllegalStateException(tsParam.name() + " required");
+                    }
+
+                    if (tsParam.required() == ALTERNATIVE) {
+                        required.put(tsParam.name(), value);
                     }
 
                     if (value == null) {
@@ -76,10 +82,16 @@ public class TuShareUtils {
 
                     params.put(tsParam.name(), value.toString());
                 } catch (IllegalAccessException | IllegalStateException e) {
-                    log.error("", e);
+                    throw new IllegalArgumentException(e);
                 }
             });
         }
+
+        if (!required.isEmpty() && required.values().stream().noneMatch(Objects::nonNull)) {
+            throw new IllegalArgumentException("need at least one param");
+        }
+
+
         return params;
     }
 

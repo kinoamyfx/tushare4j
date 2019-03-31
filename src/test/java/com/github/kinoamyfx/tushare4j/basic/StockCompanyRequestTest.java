@@ -1,8 +1,8 @@
 package com.github.kinoamyfx.tushare4j.basic;
 
+import com.github.kinoamyfx.tushare4j.TuShareClientTest;
 import com.github.kinoamyfx.tushare4j.core.TuShareException;
 import com.github.kinoamyfx.tushare4j.enums.Exchange;
-import com.github.kinoamyfx.tushare4j.enums.IsHs;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,24 +12,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import static com.github.kinoamyfx.tushare4j.TuShareClientTest.client;
-import static com.github.kinoamyfx.tushare4j.enums.ListStatus.L;
-
-public class StockBasicRequestTest {
+public class StockCompanyRequestTest {
 
     @Test
-    public void testCall() throws IOException, TuShareException {
+    public void test() throws IOException, TuShareException {
+        StockCompanyRequest request = new StockCompanyRequest()
+                .exchange(Exchange.SZSE);
 
-        StockBasicRequest request = new StockBasicRequest()
-                .listStatus(L)
-                .isHs(IsHs.H)
-                .exchange(Exchange.SSE);
+        Assert.assertNotNull(request.exchange());
 
-        request.listStatus();
-        request.isHs();
-        request.exchange();
 
-        List<StockBasic> results = client.call(request);
+        List<StockCompany> results = TuShareClientTest.client.call(request);
 
         Assert.assertFalse(results.isEmpty());
         results.parallelStream().forEach(result -> {
@@ -46,7 +39,7 @@ public class StockBasicRequestTest {
                         Assert.assertNotNull(set.invoke(result, v));
                         continue;
                     }
-                    Assert.assertNotNull(v);
+//                    Assert.assertNotNull(v);
                     Assert.assertNotNull(set.invoke(result, v));
                 }
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {

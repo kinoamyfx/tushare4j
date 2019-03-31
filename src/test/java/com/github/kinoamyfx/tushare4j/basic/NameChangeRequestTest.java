@@ -1,8 +1,7 @@
 package com.github.kinoamyfx.tushare4j.basic;
 
+import com.github.kinoamyfx.tushare4j.core.TsDate;
 import com.github.kinoamyfx.tushare4j.core.TuShareException;
-import com.github.kinoamyfx.tushare4j.enums.Exchange;
-import com.github.kinoamyfx.tushare4j.enums.IsHs;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,28 +9,30 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 import static com.github.kinoamyfx.tushare4j.TuShareClientTest.client;
-import static com.github.kinoamyfx.tushare4j.enums.ListStatus.L;
 
-public class StockBasicRequestTest {
+public class NameChangeRequestTest {
+
 
     @Test
-    public void testCall() throws IOException, TuShareException {
+    public void test() throws IOException, TuShareException {
 
-        StockBasicRequest request = new StockBasicRequest()
-                .listStatus(L)
-                .isHs(IsHs.H)
-                .exchange(Exchange.SSE);
+        NameChangeRequest request = new NameChangeRequest()
+                .tsCode("000031.SZ")
+                .startDate(TsDate.of(2019, 3, 31).minus(20, ChronoUnit.DAYS))
+                .endDate(TsDate.of(2019, 3, 31));
 
-        request.listStatus();
-        request.isHs();
-        request.exchange();
+        Assert.assertNotNull(request.tsCode());
+        Assert.assertNotNull(request.startDate());
+        Assert.assertNotNull(request.endDate());
 
-        List<StockBasic> results = client.call(request);
+        List<NameChange> results = client.call(request);
 
         Assert.assertFalse(results.isEmpty());
+
         results.parallelStream().forEach(result -> {
             try {
                 Field[] fields = result.getClass().getDeclaredFields();
@@ -42,10 +43,11 @@ public class StockBasicRequestTest {
 
                     Object v = get.invoke(result);
 
-                    if ("delist_date".equals(field.getName())) {
+                    if ("end_date".equals(field.getName())) {
                         Assert.assertNotNull(set.invoke(result, v));
                         continue;
                     }
+
                     Assert.assertNotNull(v);
                     Assert.assertNotNull(set.invoke(result, v));
                 }

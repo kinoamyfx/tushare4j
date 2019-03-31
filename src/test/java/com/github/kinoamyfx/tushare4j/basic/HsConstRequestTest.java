@@ -1,8 +1,7 @@
 package com.github.kinoamyfx.tushare4j.basic;
 
+import com.github.kinoamyfx.tushare4j.TuShareClientTest;
 import com.github.kinoamyfx.tushare4j.core.TuShareException;
-import com.github.kinoamyfx.tushare4j.enums.Exchange;
-import com.github.kinoamyfx.tushare4j.enums.IsHs;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -12,26 +11,21 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import static com.github.kinoamyfx.tushare4j.TuShareClientTest.client;
-import static com.github.kinoamyfx.tushare4j.enums.ListStatus.L;
-
-public class StockBasicRequestTest {
+public class HsConstRequestTest {
 
     @Test
-    public void testCall() throws IOException, TuShareException {
+    public void test() throws IOException, TuShareException {
 
-        StockBasicRequest request = new StockBasicRequest()
-                .listStatus(L)
-                .isHs(IsHs.H)
-                .exchange(Exchange.SSE);
+        HsConstRequest request = new HsConstRequest(HsType.SH)
+                .isNew(1);
 
-        request.listStatus();
-        request.isHs();
-        request.exchange();
+        Assert.assertNotNull(request.hsType());
+        Assert.assertNotNull(request.isNew());
 
-        List<StockBasic> results = client.call(request);
+        List<HsConst> results = TuShareClientTest.client.call(request);
 
         Assert.assertFalse(results.isEmpty());
+
         results.parallelStream().forEach(result -> {
             try {
                 Field[] fields = result.getClass().getDeclaredFields();
@@ -42,10 +36,11 @@ public class StockBasicRequestTest {
 
                     Object v = get.invoke(result);
 
-                    if ("delist_date".equals(field.getName())) {
+                    if ("out_date".equals(field.getName())) {
                         Assert.assertNotNull(set.invoke(result, v));
                         continue;
                     }
+
                     Assert.assertNotNull(v);
                     Assert.assertNotNull(set.invoke(result, v));
                 }
@@ -53,5 +48,6 @@ public class StockBasicRequestTest {
                 throw new RuntimeException(e);
             }
         });
+
     }
 }

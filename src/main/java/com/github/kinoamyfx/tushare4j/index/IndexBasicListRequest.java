@@ -6,11 +6,13 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import static com.github.kinoamyfx.tushare4j.core.TsParam.RequiredType.REQUIRED;
+
 
 @Accessors(chain = true)
 public class IndexBasicListRequest implements TsRequest<IndexBasic> {
 
-    @TsParam(name = "market", required = true)
+    @TsParam(name = "market", required = REQUIRED)
     @NonNull
     private String market;
 
