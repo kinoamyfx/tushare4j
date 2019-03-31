@@ -1,10 +1,8 @@
-package com.github.kinoamyfx.tushare4j.kline;
+package com.github.kinoamyfx.tushare4j.market;
 
 import com.github.kinoamyfx.tushare4j.CodeUtils;
 import com.github.kinoamyfx.tushare4j.core.TsDate;
 import com.github.kinoamyfx.tushare4j.core.TuShareException;
-import com.github.kinoamyfx.tushare4j.market.KLine;
-import com.github.kinoamyfx.tushare4j.market.StockDailyRequest;
 import org.junit.Assert;
 import org.junit.Test;
 

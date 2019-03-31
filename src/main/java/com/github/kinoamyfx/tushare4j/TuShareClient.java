@@ -66,7 +66,7 @@ public class TuShareClient {
                 .post(RequestBody.create(MediaType.parse("application/json"), JsonUtils.toJson(body)))
                 .build();
 
-        log.debug("REQUEST_BODY -> {}", body);
+        //log.debug("REQUEST_BODY -> {}", body);
 
         //同步执行请求
         Call call = okHttp.newCall(okRequest);

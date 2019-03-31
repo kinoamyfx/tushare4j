@@ -1,27 +1,19 @@
 package com.github.kinoamyfx.tushare4j.market;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
 public class Suspend {
 
-    @JsonProperty("ts_code")
-    private String tsCode;
+    private String ts_code;
 
-    @JsonProperty("suspend_date")
-    private String suspendDate;
+    private String suspend_date;
 
-    @JsonProperty("resume_date")
-    private String resumeDate;
+    private String resume_date;
 
-    @JsonProperty("ann_date")
-    private String annDate;
+    private String ann_date;
 
-    @JsonProperty("suspend_reason")
-    private String suspendReason;
+    private String suspend_reason;
 
-
-    @JsonProperty("reason_type")
-    private String reasonType;
+    private String reason_type;
 }
