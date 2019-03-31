@@ -1,30 +1,25 @@
 package com.github.kinoamyfx.tushare4j.basic;
 
+import com.github.kinoamyfx.tushare4j.core.TsDate;
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.experimental.Accessors;
+import com.github.kinoamyfx.tushare4j.enums.Exchange;
+import lombok.Data;
 
-@Getter
-@Accessors(chain = true)
+@Data
 public class TradeCalendarRequest implements TsRequest<TradeCalendar> {
 
     @TsParam(name = "exchange")
-    @Setter
     private Exchange exchange;
 
     @TsParam(name = "start_date")
-    @Setter
-    private String startDate;
+    private TsDate startDate;
 
     @TsParam(name = "end_date")
-    @Setter
-    private String endDate;
+    private TsDate endDate;
 
     @TsParam(name = "is_open")
-    @Setter
-    private Integer isOpen;
+    private Boolean isOpen;
 
     @Override
     public String apiName() {

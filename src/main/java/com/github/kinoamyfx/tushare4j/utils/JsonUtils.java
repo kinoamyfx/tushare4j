@@ -1,6 +1,8 @@
 package com.github.kinoamyfx.tushare4j.utils;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,6 +18,7 @@ public class JsonUtils {
 
     static {
         OBJECT_MAPPER.setSerializationInclusion(Include.ALWAYS);
+        OBJECT_MAPPER.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
     }
 
     public static String toJson(Object o) {
