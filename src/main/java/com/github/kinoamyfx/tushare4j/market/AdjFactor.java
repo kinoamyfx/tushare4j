@@ -1,16 +1,14 @@
 package com.github.kinoamyfx.tushare4j.market;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.kinoamyfx.tushare4j.core.TsDate;
 import lombok.Data;
 
 @Data
 public class AdjFactor {
-    @JsonProperty("ts_code")
-    private String tsCode;
 
-    @JsonProperty("trade_date")
-    private String tradeDate;
+    private String ts_code;
 
-    @JsonProperty("adj_factor")
-    private Float adjFactor;
+    private TsDate trade_date;
+
+    private Float adj_factor;
 }

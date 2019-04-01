@@ -64,7 +64,7 @@ public class CodeUtils {
 
         Assert.assertFalse(results.isEmpty());
 
-        results.parallelStream().limit(10).forEach(result -> {
+        results.parallelStream().limit(100).forEach(result -> {
             try {
                 Field[] fields = result.getClass().getDeclaredFields();
 

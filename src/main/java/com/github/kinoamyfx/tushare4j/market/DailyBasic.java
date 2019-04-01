@@ -1,49 +1,71 @@
 package com.github.kinoamyfx.tushare4j.market;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
 public class DailyBasic {
-
-    @JsonProperty("ts_code")
-    private String tsCode;
-
-    @JsonProperty("trade_date")
-    private String tradeDate;
-
+    /**
+     * TS股票代码
+     */
+    private String ts_code;
+    /**
+     * 交易日期
+     */
+    private String trade_date;
+    /**
+     * 当日收盘价
+     */
     private Float close;
-
-    @JsonProperty("turnover_rate")
-    private Float turnoverRate;
-
-    @JsonProperty("turnover_rate_f")
-    private Float turnoverRateF;
-
-    @JsonProperty("volume_ratio")
-    private Float volumeRatio;
+    /**
+     * 换手率（%）
+     */
+    private Float turnover_rate;
+    /**
+     * 换手率（自由流通股）
+     */
+    private Float turnover_rate_f;
+    /**
+     * 量比
+     */
+    private Float volume_ratio;
+    /**
+     * 市盈率（总市值/净利润）
+     */
     private Float pe;
-
-    @JsonProperty("pe_ttm")
-    private Float peTtm;
+    /**
+     * 市盈率（TTM）
+     */
+    private Float pe_ttm;
+    /**
+     * 市净率（总市值/净资产）
+     */
     private Float pb;
+    /**
+     * 市销率
+     */
     private Float ps;
-
-    @JsonProperty("ps_ttm")
-    private Float psTtm;
-
-    @JsonProperty("total_share")
-    private Float totalShare;
-
-    @JsonProperty("float_share")
-    private Float floatShare;
-
-    @JsonProperty("free_share")
-    private Float freeShare;
-
-    @JsonProperty("total_mv")
-    private Float totalMv;
-
-    @JsonProperty("circ_mv")
-    private Float circMv;
+    /**
+     * 市销率（TTM）
+     */
+    private Float ps_ttm;
+    /**
+     * 总股本 （万股）
+     */
+    private Float total_share;
+    /**
+     * 流通股本 （万股）
+     */
+    private Float float_share;
+    /**
+     * 自由流通股本 （万）
+     */
+    private Float free_share;
+    /**
+     * 总市值 （万元）
+     */
+    private Float total_mv;
+    /**
+     * 流通市值（万元）
+     */
+    private Float circ_mv;
 }
