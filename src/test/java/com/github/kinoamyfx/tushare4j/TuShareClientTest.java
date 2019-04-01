@@ -1,16 +1,17 @@
 package com.github.kinoamyfx.tushare4j;
 
 import com.github.kinoamyfx.tushare4j.core.FieldFilter;
+import com.github.kinoamyfx.tushare4j.core.TsDate;
 import com.github.kinoamyfx.tushare4j.core.TuShareException;
 import com.github.kinoamyfx.tushare4j.market.KLine;
 import com.github.kinoamyfx.tushare4j.market.StockDailyRequest;
-import io.reactivex.Flowable;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.ExecutionException;
 
 public class TuShareClientTest {
     public static TuShareClient client;
@@ -22,16 +23,26 @@ public class TuShareClientTest {
 
 
     @Test
-    public void testRequest() throws IOException, TuShareException {
-        StockDailyRequest request = new StockDailyRequest().tsCode("000001.SZ");
+    public void testRequest() throws IOException, TuShareException, ExecutionException, InterruptedException {
+        StockDailyRequest request = new StockDailyRequest()
+                .tsCode("000001.SZ")
+                .tradeDate(TsDate.parse("20190328"));
         List<KLine> call = TuShareClientTest.client.call(request);
+
+        Assert.assertFalse(call.isEmpty());
+
+        CompletionStage<List<KLine>> stage = client.asyncCall(request);
+
+        call = stage.toCompletableFuture().get();
+
         Assert.assertFalse(call.isEmpty());
     }
 
     @Test
-    public void testIncludeRequest() throws IOException, TuShareException {
-        StockDailyRequest request = new StockDailyRequest().tsCode("000001.SZ");
-        List<KLine> call = TuShareClientTest.client.call(request, FieldFilter.include("ts_code", "open"));
+    public void testIncludeRequest() throws IOException, TuShareException, ExecutionException, InterruptedException {
+        StockDailyRequest request = new StockDailyRequest().tsCode("000001.SZ").tradeDate(TsDate.parse("20190328"));
+        FieldFilter.FieldIncluder[] includers = FieldFilter.include("ts_code", "open");
+        List<KLine> call = TuShareClientTest.client.call(request, includers);
 
 
         Assert.assertFalse(call.isEmpty());
@@ -39,11 +50,18 @@ public class TuShareClientTest {
         call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.ts_code()));
         call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.open()));
         call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.trade_date()));
+
+
+        CompletionStage<List<KLine>> stage = client.asyncCall(request, includers);
+        call = stage.toCompletableFuture().get();
+        call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.ts_code()));
+        call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.open()));
+        call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.trade_date()));
     }
 
     @Test
-    public void testExcludeRequest() throws IOException, TuShareException {
-        StockDailyRequest request = new StockDailyRequest().tsCode("000001.SZ");
+    public void testExcludeRequest() throws IOException, TuShareException, ExecutionException, InterruptedException {
+        StockDailyRequest request = new StockDailyRequest().tsCode("000001.SZ").tradeDate(TsDate.parse("20190328"));
 
 
         FieldFilter.FieldExcluder[] excluders = FieldFilter.exclude("trade_date", "pre_close");
@@ -53,21 +71,12 @@ public class TuShareClientTest {
         call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.ts_code()));
         call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.trade_date()));
         call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.pre_close()));
-    }
-
-    //    @Test
-    public void testAsync() {
-        StockDailyRequest request = new StockDailyRequest().tsCode("000001.SZ");
-        CompletionStage<List<KLine>> stage = TuShareClientTest.client.asyncCall(request);
-        stage.whenComplete((kLines, throwable) -> {
-            //do something
-        });
 
 
-        Flowable.fromFuture(stage.toCompletableFuture())
-                .flatMap(Flowable::fromIterable)
-                .forEach(kLine -> {
-
-                });
+        CompletionStage<List<KLine>> stage = client.asyncCall(request, excluders);
+        call = stage.toCompletableFuture().get();
+        call.parallelStream().forEach(kLine -> Assert.assertNotNull(kLine.ts_code()));
+        call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.trade_date()));
+        call.parallelStream().forEach(kLine -> Assert.assertNull(kLine.pre_close()));
     }
 }

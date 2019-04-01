@@ -22,7 +22,7 @@ public class TsDate {
         this.date = date;
     }
 
-    private TsDate(String yyyyMMdd) {
+    public TsDate(String yyyyMMdd) {
         date = parse(yyyyMMdd).date;
     }
 
