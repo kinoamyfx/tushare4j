@@ -1,29 +1,29 @@
 package com.github.kinoamyfx.tushare4j.index;
 
+import com.github.kinoamyfx.tushare4j.core.TsDate;
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import lombok.Data;
-import lombok.experimental.Accessors;
+
+import static com.github.kinoamyfx.tushare4j.core.TsParam.RequiredType.ALTERNATIVE;
 
 @Data
-@Accessors(chain = true)
 public class IndexWeightRequest implements TsRequest<IndexWeight> {
 
-    @TsParam(name = "index_code")
+    @TsParam(name = "index_code", required = ALTERNATIVE)
     private String indexCode;
 
-    @TsParam(name = "trade_date")
-    private String tradeDate;
+    @TsParam(name = "trade_date", required = ALTERNATIVE)
+    private TsDate tradeDate;
 
     @TsParam(name = "start_date")
-    private String startDate;
+    private TsDate startDate;
 
     @TsParam(name = "end_date")
-    private String endDate;
+    private TsDate endDate;
 
     @Override
     public String apiName() {
         return "index_weight";
     }
-
 }
