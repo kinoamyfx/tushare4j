@@ -19,5 +19,11 @@ public class News {
     /**
      * 分类
      */
-    private String channels;
+    private Channel[] channels;
+
+    @Data
+    public static class Channel {
+        private String id;
+        private String name;
+    }
 }
