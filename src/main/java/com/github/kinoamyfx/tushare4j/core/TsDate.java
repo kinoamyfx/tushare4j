@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @JsonSerialize(using = TsDateSerialize.class)
 @JsonDeserialize(using = TsDateDeserialize.class)
-public class TsDate {
+public class TsDate implements Comparable<TsDate> {
 
     public static final DateTimeFormatter TS_DATE_FORMAT = DateTimeFormatter.ofPattern("yyyyMMdd");
 
@@ -66,4 +66,8 @@ public class TsDate {
         return date.format(TS_DATE_FORMAT);
     }
 
+    @Override
+    public int compareTo(TsDate o) {
+        return date.compareTo(o.date);
+    }
 }

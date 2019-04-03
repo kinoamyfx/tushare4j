@@ -1,5 +1,6 @@
 package com.github.kinoamyfx.tushare4j.market;
 
+import com.github.kinoamyfx.tushare4j.core.TsDate;
 import lombok.Data;
 
 @Data
@@ -11,7 +12,7 @@ public strictfp class KLine {
     /**
      * 交易日期
      */
-    private String trade_date;
+    private TsDate trade_date;
     /**
      * 开盘价(元)
      */
