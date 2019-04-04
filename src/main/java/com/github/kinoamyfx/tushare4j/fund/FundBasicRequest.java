@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 public class FundBasicRequest implements TsRequest<FundBasic> {
 
     @TsParam(name = "market")
-    private String market = "E";
+    private FundMarket market = FundMarket.E;
 
     @Override
     public String apiName() {
