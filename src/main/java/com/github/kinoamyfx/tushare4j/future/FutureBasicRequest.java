@@ -7,11 +7,11 @@ import lombok.Data;
 @Data
 public class FutureBasicRequest implements TsRequest<FutureBasic> {
 
-    @TsParam(name = "exchange")
-    private String exchange;
+    @TsParam(name = "exchange", required = TsParam.RequiredType.REQUIRED)
+    private FutureExchange exchange;
 
     @TsParam(name = "fut_type")
-    private String type;
+    private Integer type;
 
     @Override
     public String apiName() {

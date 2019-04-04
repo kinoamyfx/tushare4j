@@ -1,5 +1,6 @@
 package com.github.kinoamyfx.tushare4j.future;
 
+import com.github.kinoamyfx.tushare4j.core.TsDate;
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import lombok.Data;
@@ -9,18 +10,19 @@ public class FutureDailyRequest implements TsRequest<FutureDaily> {
 
 
     @TsParam(name = "ts_code")
-    private String ts_code;
+    private String tsCode;
+
     @TsParam(name = "trade_date")
-    private String tradeDate;
+    private TsDate tradeDate;
 
     @TsParam(name = "exchange")
-    private String exchange;
+    private FutureExchange exchange;
 
     @TsParam(name = "start_date")
-    private String startDate;
+    private TsDate startDate;
 
     @TsParam(name = "end_date")
-    private String endDate;
+    private TsDate endDate;
 
     @Override
     public String apiName() {
