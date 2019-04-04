@@ -1,5 +1,6 @@
 package com.github.kinoamyfx.tushare4j.rate;
 
+import com.github.kinoamyfx.tushare4j.core.TsDate;
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import lombok.Data;
@@ -8,13 +9,13 @@ import lombok.Data;
 public class HiborRequest implements TsRequest<Hibor> {
 
     @TsParam(name = "date")
-    private String date;
+    private TsDate date;
 
     @TsParam(name = "start_date")
-    private String startDate;
+    private TsDate startDate;
 
     @TsParam(name = "end_date")
-    private String endDate;
+    private TsDate endDate;
 
     @Override
     public String apiName() {
