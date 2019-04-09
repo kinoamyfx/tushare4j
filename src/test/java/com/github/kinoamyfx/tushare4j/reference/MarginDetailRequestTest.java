@@ -2,9 +2,9 @@ package com.github.kinoamyfx.tushare4j.reference;
 
 import org.junit.Test;
 
-public class BlockTradeRequestTest {
+public class MarginDetailRequestTest {
     @Test
     public void test() {
-        BlockTradeRequest request = new BlockTradeRequest();
+        MarginDetailRequest request = new MarginDetailRequest();
     }
 }
