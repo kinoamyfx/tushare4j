@@ -2,10 +2,9 @@ package com.github.kinoamyfx.tushare4j.enums;
 
 import org.junit.Test;
 
-public class MarketTest {
-
+public class CurrencyTest {
     @Test
     public void test() {
-        Market.valueOf("SW");
+        Currency.valueOf("USD");
     }
 }

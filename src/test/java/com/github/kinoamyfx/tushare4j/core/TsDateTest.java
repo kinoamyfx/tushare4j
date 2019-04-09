@@ -16,5 +16,8 @@ public class TsDateTest {
 
         Assert.assertEquals(TsDate.today(), JsonUtils.deepCopy(TsDate.today()));
         Assert.assertEquals(TsDate.today().hashCode(), JsonUtils.deepCopy(TsDate.today()).hashCode());
+
+        Assert.assertEquals(0, TsDate.today().compareTo(JsonUtils.deepCopy(TsDate.today())));
+        Assert.assertNotNull(TsDate.today().toString());
     }
 }
