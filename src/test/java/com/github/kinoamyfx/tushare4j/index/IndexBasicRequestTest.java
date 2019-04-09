@@ -2,7 +2,6 @@ package com.github.kinoamyfx.tushare4j.index;
 
 import com.github.kinoamyfx.tushare4j.CodeUtils;
 import com.github.kinoamyfx.tushare4j.core.TuShareException;
-import com.github.kinoamyfx.tushare4j.enums.Market;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,11 +16,11 @@ public class IndexBasicRequestTest {
     @Test
     public void testRequest() throws IOException, TuShareException {
         IndexBasicRequest request = new IndexBasicRequest()
-                .market(Market.SW)
+                .market(IndexBasicRequest.Market.SW)
                 .publisher(null)
                 .category(null);
 
-        Assert.assertEquals(Market.SW, request.market());
+        Assert.assertEquals(IndexBasicRequest.Market.SW, request.market());
         Assert.assertNull(request.publisher());
         Assert.assertNull(request.category());
 
