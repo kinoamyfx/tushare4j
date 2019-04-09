@@ -1,5 +1,8 @@
 package com.github.kinoamyfx.tushare4j.finance;
 
+import lombok.Data;
+
+@Data
 public class CashFlow {
     /**
      * TS股票代码
