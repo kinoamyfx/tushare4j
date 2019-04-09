@@ -11,10 +11,10 @@ import static com.github.kinoamyfx.tushare4j.core.TsParam.RequiredType.REQUIRED;
 public class MarginDetailRequest implements TsRequest<MarginDetail> {
 
     @TsParam(name = "trade_date", required = REQUIRED)
-    private TsDate trade_date;
+    private TsDate tradeDate;
 
     @TsParam(name = "ts_code")
-    private String ts_code;
+    private String tsCode;
 
 
     @Override
