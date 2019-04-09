@@ -1,5 +1,6 @@
 package com.github.kinoamyfx.tushare4j.finance;
 
+import com.github.kinoamyfx.tushare4j.core.TsDate;
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import lombok.Data;
@@ -11,22 +12,22 @@ public class CashFlowRequest implements TsRequest<CashFlow> {
     private String tsCode;
 
     @TsParam(name = "ann_date")
-    private String annDate;
+    private TsDate annDate;
 
     @TsParam(name = "start_date")
-    private String startDate;
+    private TsDate startDate;
 
     @TsParam(name = "end_date")
-    private String endDate;
+    private TsDate endDate;
 
     @TsParam(name = "period")
-    private String period;
+    private TsDate period;
 
     @TsParam(name = "report_type")
-    private String reportType;
+    private Integer reportType;
 
     @TsParam(name = "comp_type")
-    private String compType;
+    private Integer compType;
 
     @Override
     public String apiName() {
