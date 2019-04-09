@@ -3,6 +3,7 @@ package com.github.kinoamyfx.tushare4j.fund;
 import com.github.kinoamyfx.tushare4j.CodeUtils;
 import com.github.kinoamyfx.tushare4j.TuShareClientTest;
 import com.github.kinoamyfx.tushare4j.core.TuShareException;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -18,7 +19,9 @@ public class FundCompanyRequestTest {
 
         FundCompanyRequest request = new FundCompanyRequest();
 
-        //CodeUtils.assertDataMethod(request);
+        Assert.assertEquals(request, request);
+        Assert.assertNotNull(request.hashCode());
+        Assert.assertNotNull(request.toString());
 
         List<FundCompany> call = TuShareClientTest.client.call(request);
 

@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 public class FundCompanyRequest implements TsRequest<FundCompany> {
-
     @Override
     public String apiName() {
         return "fund_company";
