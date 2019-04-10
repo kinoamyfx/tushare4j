@@ -93,7 +93,7 @@ public class TuShareUtils {
         }
 
         if (!required.isEmpty() && required.values().stream().noneMatch(Objects::nonNull)) {
-            throw new IllegalArgumentException("need at least one param");
+            throw new IllegalArgumentException(Arrays.toString(required.keySet().toArray()) + " need at least one param");
         }
 
 
