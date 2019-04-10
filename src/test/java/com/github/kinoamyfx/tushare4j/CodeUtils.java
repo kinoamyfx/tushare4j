@@ -6,6 +6,8 @@ import org.junit.Assert;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -91,5 +93,13 @@ public class CodeUtils {
                 throw new RuntimeException(e);
             }
         });
+    }
+
+    public static void assertFields(List results, String... excludes) {
+        if (excludes.length == 0) {
+            assertFields(results, Collections.emptyList());
+        } else {
+            assertFields(results, Arrays.asList(excludes));
+        }
     }
 }

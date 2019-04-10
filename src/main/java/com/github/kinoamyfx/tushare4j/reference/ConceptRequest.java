@@ -8,7 +8,7 @@ import lombok.Data;
 public class ConceptRequest implements TsRequest<Concept> {
 
     @TsParam(name = "src")
-    private String src = "ts";
+    private String src;
 
     @Override
     public String apiName() {

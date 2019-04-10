@@ -3,13 +3,13 @@ package com.github.kinoamyfx.tushare4j.reference;
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import lombok.Data;
-import lombok.experimental.Accessors;
+
+import static com.github.kinoamyfx.tushare4j.core.TsParam.RequiredType.REQUIRED;
 
 @Data
-@Accessors(chain = true)
 public class ConceptDetailRequest implements TsRequest<ConceptDetail> {
 
-    @TsParam(name = "id")
+    @TsParam(name = "id", required = REQUIRED)
     private String id;
 
     @Override
