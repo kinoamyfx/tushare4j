@@ -9,7 +9,6 @@ TuShare4J-PRO     -     A TuShare Java Client
 
 ### 依赖引入
 ```xml
-A
 ```
 
 ### 使用方法
