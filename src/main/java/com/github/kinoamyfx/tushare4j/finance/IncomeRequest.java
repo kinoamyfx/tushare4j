@@ -1,40 +1,35 @@
 package com.github.kinoamyfx.tushare4j.finance;
 
+import com.github.kinoamyfx.tushare4j.core.TsDate;
 import com.github.kinoamyfx.tushare4j.core.TsParam;
 import com.github.kinoamyfx.tushare4j.core.TsRequest;
 import lombok.Data;
-import lombok.NonNull;
-import lombok.experimental.Accessors;
+
+import static com.github.kinoamyfx.tushare4j.core.TsParam.RequiredType.REQUIRED;
 
 @Data
-@Accessors(chain = true)
 public class IncomeRequest implements TsRequest<Income> {
 
-    @TsParam(name = "ts_code")
-    @NonNull
+    @TsParam(name = "ts_code", required = REQUIRED)
     private String tsCode;
 
     @TsParam(name = "ann_date")
-    private String annDate;
+    private TsDate annDate;
 
     @TsParam(name = "start_date")
-    private String startDate;
+    private TsDate startDate;
 
     @TsParam(name = "end_date")
-    private String endDate;
+    private TsDate endDate;
 
     @TsParam(name = "period")
-    private String period;
+    private TsDate period;
 
     @TsParam(name = "report_type")
-    private String reportType;
+    private Integer reportType;
 
     @TsParam(name = "comp_type")
-    private String compType;
-
-    public IncomeRequest(@NonNull String tsCode) {
-        this.tsCode = tsCode;
-    }
+    private Integer compType;
 
     @Override
     public String apiName() {
