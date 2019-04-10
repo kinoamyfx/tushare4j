@@ -19,7 +19,7 @@ TuShare4J-PRO     -     A TuShare Java Client
     TuShareClient client = new TuShareClient(token);
     
     //构造请求体
-    StockDailyRequest request = new StockDailyRequest().setTsCode("000001.SZ");
+    StockDailyRequest request = new StockDailyRequest().tsCode("000001.SZ");
     
     //执行请求,得到返回结果
     //默认返回全字段
