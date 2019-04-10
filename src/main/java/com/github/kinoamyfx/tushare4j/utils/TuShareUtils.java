@@ -54,7 +54,7 @@ public class TuShareUtils {
 
 
     /**
-     * @return
+     * @return ts param, key-value.
      */
     public static Map<String, String> resolveTsParams(Object o) {
 

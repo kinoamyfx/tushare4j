@@ -16,11 +16,11 @@ public class IndexBasicRequestTest {
     @Test
     public void testRequest() throws IOException, TuShareException {
         IndexBasicRequest request = new IndexBasicRequest()
-                .market(IndexBasicRequest.Market.SW)
+                .market(IndexMarket.SW)
                 .publisher(null)
                 .category(null);
 
-        Assert.assertEquals(IndexBasicRequest.Market.SW, request.market());
+        Assert.assertEquals(IndexMarket.SW, request.market());
         Assert.assertNull(request.publisher());
         Assert.assertNull(request.category());
 
