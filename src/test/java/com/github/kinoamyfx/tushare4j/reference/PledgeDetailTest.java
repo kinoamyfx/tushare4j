@@ -91,7 +91,6 @@ public class PledgeDetailTest {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
     public void codeg() {
         CodeUtils.codeg4(content);
     }

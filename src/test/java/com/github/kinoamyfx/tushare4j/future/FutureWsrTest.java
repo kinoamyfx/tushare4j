@@ -109,7 +109,6 @@ public class FutureWsrTest {
             "</tbody>";
 
 
-    @Test
     public void codeg() {
 
         CodeUtils.codeg4(content);

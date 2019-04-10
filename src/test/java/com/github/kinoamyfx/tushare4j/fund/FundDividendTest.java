@@ -103,7 +103,6 @@ public class FundDividendTest {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
     public void codeg() {
         CodeUtils.codeg4(content);
     }

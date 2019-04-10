@@ -78,7 +78,6 @@ public class IndexDailyBasicTest {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
     public void codeg() {
         CodeUtils.codeg4(content);
     }

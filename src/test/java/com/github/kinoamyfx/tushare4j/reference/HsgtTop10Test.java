@@ -61,7 +61,6 @@ public class HsgtTop10Test {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
     public void codeg() {
         CodeUtils.codeg3(content);
     }

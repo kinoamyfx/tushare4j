@@ -48,7 +48,6 @@ public class PledgeStatTest {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
     public void codeg() {
         CodeUtils.codeg4(content);
     }

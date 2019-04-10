@@ -1,7 +1,6 @@
 package com.github.kinoamyfx.tushare4j.fund;
 
 import com.github.kinoamyfx.tushare4j.CodeUtils;
-import org.junit.Test;
 
 public class FundCompanyTest {
     String content = "<tbody><tr>\n" +
@@ -114,7 +113,6 @@ public class FundCompanyTest {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
     public void codeg() {
         CodeUtils.codeg4(content);
     }

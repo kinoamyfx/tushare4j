@@ -60,7 +60,6 @@ public class ShiborTest {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
     public void codeg() {
         CodeUtils.codeg4(c);
     }

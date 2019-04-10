@@ -4,7 +4,6 @@ import org.junit.Test;
 
 public class TmtTwIncomeTest {
 
-    @Test
     public void codeg() {
     }
 }

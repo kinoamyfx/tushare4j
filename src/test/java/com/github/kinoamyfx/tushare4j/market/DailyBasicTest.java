@@ -86,7 +86,6 @@ public class DailyBasicTest {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
     public void codeg() {
         CodeUtils.codeg3(content);
     }

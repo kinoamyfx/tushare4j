@@ -36,7 +36,6 @@ public class Top10HoldersTest {
             "</tr>\n" +
             "</tbody>";
 
-    @Test
     public void codeg() {
         CodeUtils.codeg3(content);
     }
