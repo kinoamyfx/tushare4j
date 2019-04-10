@@ -1,4 +1,4 @@
-TuShare4J-PRO     -     A TuShare Java Client
+tushare4j     -     A TuShare Java Client
 
 [![Build Status](https://www.travis-ci.org/KinoamyFx/tushare4j-pro.svg?branch=master)](https://www.travis-ci.org/KinoamyFx/tushare4j-pro)
 [![codecov](https://codecov.io/gh/KinoamyFx/tushare4j/branch/master/graph/badge.svg)](https://codecov.io/gh/KinoamyFx/tushare4j)
@@ -9,6 +9,11 @@ TuShare4J-PRO     -     A TuShare Java Client
 
 ### 依赖引入
 ```xml
+    <dependency>
+      <groupId>com.github.kinoamyfx</groupId>
+      <artifactId>tushare4j</artifactId>
+      <version>1.0.0-RELEASE</version>
+    </dependency>
 ```
 
 ### 使用方法
