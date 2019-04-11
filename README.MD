@@ -7,6 +7,8 @@ tushare4j     -     A TuShare Java Client
 # 相关项目
 - TuShare Http Api: https://tushare.pro/document/1?doc_id=130
 
+    如果API有所改动,可以提Issue哦
+
 ### 依赖引入
 ```xml
     <dependency>
