@@ -6,5 +6,5 @@ after_success:
 
 deploy:
   provider: heroku
-  api_key:
-    secure: ${HEROKU_TOKEN}
+  api_key: ${HEROKU_TOKEN}
+  app: tushare4j-heroku
