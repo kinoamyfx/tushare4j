@@ -30,6 +30,6 @@ public class DisclosureDateRequestTest {
 
         List<DisclosureDate> call = TuShareClientTest.client.call(request);
 
-        CodeUtils.assertFields(call, "actual_date", "modify_date", "ann_date");
+        CodeUtils.assertFields(call, "pre_date", "actual_date", "modify_date", "ann_date");
     }
 }
